@@ -28,9 +28,9 @@ $id_values         = $locals['id_values'];
 	<span href="#" class="show-collapsed block-subtitle">
 		<label>
 			<input type="checkbox" value="1" name="<?php echo esc_attr( $var_enabled_name ); ?>" class="checkbox-main" 
-																<?php
-																checked( $is_enabled );
-																?>
+			<?php
+			checked( $is_enabled );
+			?>
 			>
 			<?php
 			echo esc_html( $title );
@@ -69,16 +69,16 @@ $id_values         = $locals['id_values'];
 							<li>
 								<label class="selectit">
 									<input type="checkbox" name="pages[]" value="<?php echo esc_attr( "{$id}" ); ?>" id="<?php echo esc_attr( 'page_' . $id ); ?>" 
-																							<?php
-																							checked( in_array( $id, $id_values, true ) );
-																							?>
+									<?php
+									checked( in_array( $id, $id_values, true ) );
+									?>
 		>
-										<?php
-										echo esc_html( $title );
-										?>
+									<?php
+									echo esc_html( $title );
+									?>
 								</label><span class="height26px"></span>
 							</li>
-									<?php
+								<?php
 						}
 						?>
 					</ul>

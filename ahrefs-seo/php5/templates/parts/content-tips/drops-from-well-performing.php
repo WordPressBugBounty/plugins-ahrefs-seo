@@ -19,9 +19,9 @@ $url    = Links::content_audit( Ahrefs_Seo_Data_Content::STATUS4_DROPPED ) . '#v
 	</div>
 	<div class="buttons">
 		<a class="button button-primary content_tip_show_dropped" href="<?php echo esc_attr( $url ); ?>">
-																					<?php
-																					esc_html_e( 'View articles', 'ahrefs-seo' );
-																					?>
+		<?php
+		esc_html_e( 'View articles', 'ahrefs-seo' );
+		?>
 		</a>
 	</div>
 	<button type="button" class="notice-dismiss suggested-tip-close-button"><span class="screen-reader-text">

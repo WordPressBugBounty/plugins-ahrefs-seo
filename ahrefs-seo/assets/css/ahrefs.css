@@ -1336,6 +1336,7 @@ table.backlinks thead th, table.backlinks tfoot th {
 }
 .ahrefs-analytics.incorrect-account .incorrect-account-tip {
 	display: block;
+	margin-bottom: 16px;
 }
 
 @media screen and (max-width: 550px){

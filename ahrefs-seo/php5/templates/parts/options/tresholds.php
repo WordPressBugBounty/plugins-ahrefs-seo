@@ -42,9 +42,9 @@ esc_html_e( 'Waiting time after publication or update', 'ahrefs-seo' );
 			foreach ( $options as $option ) {
 				?>
 				<option value="<?php echo esc_attr( $option['id'] ); ?>"
-											<?php
-											selected( $option['selected'] );
-											?>
+				<?php
+				selected( $option['selected'] );
+				?>
 	>
 				<?php
 				echo esc_html( $option['title'] );

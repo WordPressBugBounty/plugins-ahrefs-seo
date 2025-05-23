@@ -4,8 +4,8 @@ Plugin link: https://ahrefs.com/wordpress-seo-plugin
 Tags: content audit, seo, ahrefs, content analysis, google search console, google analytics, seo audit, blog audit, content audit template, site audit
 
 Requires at least: 5.0
-Tested up to: 6.6
-Stable tag: 0.10.4
+Tested up to: 6.8
+Stable tag: 0.10.5
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -128,6 +128,11 @@ It works perfectly well with other plugins like Yoast, Rank Math, SEOPress.
 4. Set or change target keywords for your pages based on target phrases from other plugins, top queries from Search Console or our analysis
 
 == Changelog ==
+= 0.10.5 =
+Release date: May 23nd, 2025
+
+The Ahrefs SEO 0.10.5 release includes small improvements and bug fixes.
+
 = 0.10.4 =
 Release date: September 4th, 2024
 

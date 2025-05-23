@@ -406,9 +406,9 @@ class Ahrefs_Seo_Table_Content extends Ahrefs_Seo_Table {
 			$link = Helper_Content::get()->update_link( $link );
 			?>
 			<a href="<?php echo esc_attr( $link ); ?>" class="author-link">
-								<?php
-								echo esc_html( get_the_author_meta( 'display_name', $item->author ) );
-								?>
+			<?php
+			echo esc_html( get_the_author_meta( 'display_name', $item->author ) );
+			?>
 			</a>
 			<?php
 		} else {
@@ -533,9 +533,9 @@ class Ahrefs_Seo_Table_Content extends Ahrefs_Seo_Table {
 		if ( $edit_link ) {
 			?>
 			<a href="<?php echo esc_attr( $edit_link ); ?>" class="content-post-button" target="_blank">
-								<?php
-								echo esc_html( $badge );
-								?>
+			<?php
+			echo esc_html( $badge );
+			?>
 			</a>
 			<?php
 		}
@@ -1131,9 +1131,9 @@ class Ahrefs_Seo_Table_Content extends Ahrefs_Seo_Table {
 				foreach ( $list as $item ) {
 					?>
 					<option value="<?php echo esc_attr( $item['id'] ); ?>"
-												<?php
-												selected( $this->author, $item['id'] );
-												?>
+					<?php
+					selected( $this->author, $item['id'] );
+					?>
 				>
 					<?php
 					echo esc_html( $item['name'] );
@@ -1158,18 +1158,18 @@ class Ahrefs_Seo_Table_Content extends Ahrefs_Seo_Table {
 		</label>
 		<select name="keywords" id="keywords" class="postform">
 			<option value="<?php echo esc_attr( self::FILTER_KEYWORDS_ALL ); ?>" class="current"
-										<?php
-										selected( $this->keywords, self::FILTER_KEYWORDS_ALL );
-										?>
+			<?php
+			selected( $this->keywords, self::FILTER_KEYWORDS_ALL );
+			?>
 		>
 		<?php
 		esc_html_e( 'All keywords', 'ahrefs-seo' );
 		?>
 		</option>
 			<option value="<?php echo esc_attr( (string) self::FILTER_KEYWORDS_APPROVED ); ?>" class="current"
-										<?php
-										selected( $this->keywords, self::FILTER_KEYWORDS_APPROVED );
-										?>
+			<?php
+			selected( $this->keywords, self::FILTER_KEYWORDS_APPROVED );
+			?>
 		>
 		<?php
 		esc_html_e( 'Approved by you', 'ahrefs-seo' );
@@ -1179,9 +1179,9 @@ class Ahrefs_Seo_Table_Content extends Ahrefs_Seo_Table {
 			if ( Sources::get()->has_active_source( Sources::SOURCE_YOASTSEO ) ) {
 				?>
 					<option value="<?php echo esc_attr( (string) self::FILTER_KEYWORDS_YOAST ); ?>" class="current"
-												<?php
-												selected( $this->keywords, self::FILTER_KEYWORDS_YOAST );
-												?>
+					<?php
+					selected( $this->keywords, self::FILTER_KEYWORDS_YOAST );
+					?>
 			>
 				<?php
 				esc_html_e( 'Pulled from Yoast', 'ahrefs-seo' );
@@ -1192,9 +1192,9 @@ class Ahrefs_Seo_Table_Content extends Ahrefs_Seo_Table {
 			if ( Sources::get()->has_active_source( Sources::SOURCE_AIOSEO ) ) {
 				?>
 					<option value="<?php echo esc_attr( (string) self::FILTER_KEYWORDS_AIOSEO ); ?>" class="current"
-												<?php
-												selected( $this->keywords, self::FILTER_KEYWORDS_AIOSEO );
-												?>
+					<?php
+					selected( $this->keywords, self::FILTER_KEYWORDS_AIOSEO );
+					?>
 			>
 				<?php
 				esc_html_e( 'Pulled from AIOSEO', 'ahrefs-seo' );
@@ -1205,9 +1205,9 @@ class Ahrefs_Seo_Table_Content extends Ahrefs_Seo_Table {
 			if ( Sources::get()->has_active_source( Sources::SOURCE_RANKMATH ) ) {
 				?>
 					<option value="<?php echo esc_attr( (string) self::FILTER_KEYWORDS_RANKMATH ); ?>" class="current"
-												<?php
-												selected( $this->keywords, self::FILTER_KEYWORDS_RANKMATH );
-												?>
+					<?php
+					selected( $this->keywords, self::FILTER_KEYWORDS_RANKMATH );
+					?>
 			>
 				<?php
 				esc_html_e( 'Pulled from RankMath', 'ahrefs-seo' );
@@ -1217,9 +1217,9 @@ class Ahrefs_Seo_Table_Content extends Ahrefs_Seo_Table {
 			}
 			?>
 			<option value="<?php echo esc_attr( (string) self::FILTER_KEYWORDS_SUGGESTED ); ?>" class="current"
-										<?php
-										selected( $this->keywords, self::FILTER_KEYWORDS_SUGGESTED );
-										?>
+			<?php
+			selected( $this->keywords, self::FILTER_KEYWORDS_SUGGESTED );
+			?>
 		>
 		<?php
 		esc_html_e( 'Suggested by the plugin', 'ahrefs-seo' );
@@ -1229,9 +1229,9 @@ class Ahrefs_Seo_Table_Content extends Ahrefs_Seo_Table {
 			if ( 'excluded' !== $this->tab ) { // do not show "Duplicated keywords" at the Excluded tab. We do not analyze these content, so it make no sense.
 				?>
 			<option value="<?php echo esc_attr( (string) self::FILTER_KEYWORDS_DUPLICATED ); ?>" class="current"
-										<?php
-										selected( $this->keywords, self::FILTER_KEYWORDS_DUPLICATED );
-										?>
+				<?php
+				selected( $this->keywords, self::FILTER_KEYWORDS_DUPLICATED );
+				?>
 			>
 				<?php
 				esc_html_e( 'Duplicated keywords', 'ahrefs-seo' );
@@ -1241,9 +1241,9 @@ class Ahrefs_Seo_Table_Content extends Ahrefs_Seo_Table {
 			}
 			?>
 			<option value="<?php echo esc_attr( (string) self::FILTER_KEYWORDS_NO_DETECTED ); ?>" class="current"
-										<?php
-										selected( $this->keywords, self::FILTER_KEYWORDS_NO_DETECTED );
-										?>
+			<?php
+			selected( $this->keywords, self::FILTER_KEYWORDS_NO_DETECTED );
+			?>
 		>
 		<?php
 		esc_html_e( 'No keyword detected', 'ahrefs-seo' );
@@ -1267,9 +1267,9 @@ class Ahrefs_Seo_Table_Content extends Ahrefs_Seo_Table {
 		</label>
 		<select name="reason" id="reason" class="postform">
 			<option value="<?php echo esc_attr( self::FILTER_KEYWORDS_ALL ); ?>" class="current"
-										<?php
-										selected( $this->reason, '' );
-										?>
+			<?php
+			selected( $this->reason, '' );
+			?>
 		>
 		<?php
 		esc_html_e( 'All exclusion reasons', 'ahrefs-seo' );
@@ -1279,9 +1279,9 @@ class Ahrefs_Seo_Table_Content extends Ahrefs_Seo_Table {
 			foreach ( $reasons as $reason ) {
 				?>
 				<option value="<?php echo esc_attr( $reason ); ?>" class="current"
-											<?php
-											selected( $this->reason, $reason );
-											?>
+				<?php
+				selected( $this->reason, $reason );
+				?>
 			>
 				<?php
 				echo esc_html( $this::get_action_title( $reason ) );

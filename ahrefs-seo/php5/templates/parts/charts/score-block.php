@@ -57,9 +57,9 @@ if ( 0 === $total ) {
 			<div class="score-text 
 			<?php
 			echo esc_attr( $badge_class ); ?>">
-	<?php
-		echo esc_html( $badge_text );
-	?>
+<?php
+echo esc_html( $badge_text );
+?>
 </div>
 		</div>
 	</div>

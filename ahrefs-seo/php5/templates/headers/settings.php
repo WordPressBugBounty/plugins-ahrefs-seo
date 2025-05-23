@@ -22,9 +22,9 @@ echo isset( $locals['header_class'] ) ? esc_attr( implode( ' ', $locals['header_
 	<div class="content-right">
 		<div>
 			<a class="content-hint-support" href="<?php echo esc_attr( Ahrefs_Seo::get_support_url() ); ?>" target="_blank"><span class="dashicons dashicons-email"></span>
-															<?php
-																esc_html_e( 'Support', 'ahrefs-seo' );
-															?>
+			<?php
+			esc_html_e( 'Support', 'ahrefs-seo' );
+			?>
 			</a>
 		</div>
 		<div>

@@ -24,9 +24,9 @@ $url    = add_query_arg( [ 'keywords' => Ahrefs_Seo_Table_Content::FILTER_KEYWOR
 	</div>
 	<div class="buttons">
 		<a class="button button-primary content_tip_show_suggested" href="<?php echo esc_attr( $url ); ?>">
-																					<?php
-																						esc_html_e( 'Check suggested keywords', 'ahrefs-seo' );
-																					?>
+		<?php
+		esc_html_e( 'Check suggested keywords', 'ahrefs-seo' );
+		?>
 		</a>
 		<a class="link" href="https://ahrefs.com/blog/keyword-research/" target="_blank">
 		<?php

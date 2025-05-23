@@ -16,18 +16,18 @@ $is_post          = $locals['is_post'];
 ?>
 <li class="popular-category">
 	<label class="selectit"><input value="1" type="checkbox" name="<?php echo esc_attr( $var_enabled_name ); ?>" 
-																				<?php
-																				checked( $is_enabled );
-																				?>
+	<?php
+	checked( $is_enabled );
+	?>
 	>
 	<?php
 	echo esc_html( $title );
 	if ( $is_post ) {
 		?>
 			<span class="badge-post-type" title="<?php esc_attr_e( 'Custom Post Type', 'ahrefs-seo' ); ?>">
-																						<?php
-																						esc_html_e( 'CPT', 'ahrefs-seo' );
-																						?>
+			<?php
+			esc_html_e( 'CPT', 'ahrefs-seo' );
+			?>
 	</span>
 			<?php
 	}

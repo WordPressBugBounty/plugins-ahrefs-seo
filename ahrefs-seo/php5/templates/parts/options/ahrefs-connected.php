@@ -52,12 +52,12 @@ if ( '' !== $message ) {
 					?>
 					<div class="account-actions">
 						<a href="<?php echo esc_attr( $disconnect_link ); ?>" class="disconnect-button" id="ahrefs_disconnect"><span class="text">
-											<?php
-											esc_html_e( 'Change account', 'ahrefs-seo' );
-											?>
+						<?php
+						esc_html_e( 'Change account', 'ahrefs-seo' );
+						?>
 		</span></a>
 					</div>
-						<?php
+					<?php
 				}
 				?>
 			</div>
@@ -83,12 +83,12 @@ if ( '' !== $message ) {
 					?>
 					<div class="account-actions">
 						<a href="<?php echo esc_attr( $disconnect_link ); ?>" class="disconnect-button" id="ahrefs_disconnect"><span class="text">
-											<?php
-											esc_html_e( 'Change account', 'ahrefs-seo' );
-											?>
+						<?php
+						esc_html_e( 'Change account', 'ahrefs-seo' );
+						?>
 		</span></a>
 					</div>
-						<?php
+					<?php
 				}
 				?>
 			</div>

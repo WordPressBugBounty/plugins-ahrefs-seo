@@ -88,6 +88,11 @@ class Ahrefs_Seo_Api extends Ahrefs_Seo_Abstract_Api {
 	 * @return void
 	 */
 	protected function set_last_error( $message, $type ) {
+		if ( strpos( $message, 'has unsatisfied restrictions' ) !== false ) {
+			Ahrefs_Seo_Token::get()->disconnect();
+			/* translators: %s: original error message. */
+			$message = sprintf( __( 'Ahrefs account was disconnected: %s Please reconnect Ahrefs account.', 'ahrefs-seo' ), $message );
+		}
 		$this->last_error = $message;
 		Ahrefs_Seo_Errors::save_message( 'ahrefs', $message, $type );
 	}

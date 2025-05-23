@@ -1,17 +1,17 @@
-# Copyright (C) 2024 Ahrefs
+# Copyright (C) 2025 Ahrefs
 # This file is distributed under the same license as the Ahrefs SEO plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ahrefs SEO 0.10.4\n"
+"Project-Id-Version: Ahrefs SEO 0.10.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ahrefs-seo\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-09-04T11:42:05+00:00\n"
+"POT-Creation-Date: 2025-05-23T12:52:34+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.10.0\n"
+"X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: ahrefs-seo\n"
 
 #. Plugin Name of the plugin
@@ -57,17 +57,19 @@ msgid "https://ahrefs.com/"
 msgstr ""
 
 #. translators: %s: php version string
-#: ahrefs-plugin.php:61
+#: ahrefs-plugin.php:63
+#, php-format
 msgid "Ahrefs SEO requires PHP version %s or above. Please update PHP to run this plugin."
 msgstr ""
 
-#: ahrefs-plugin.php:63
+#: ahrefs-plugin.php:65
 msgid "Read more"
 msgstr ""
 
 #. translators: %d: number of found link in menu
 #: php5/class-ahrefs-seo-advisor.php:204
 #: php7/class-ahrefs-seo-advisor.php:245
+#, php-format
 msgid "(menu with %d link)"
 msgid_plural "(menu with %d links)"
 msgstr[0] ""
@@ -77,18 +79,16 @@ msgstr[1] ""
 #: php5/class-ahrefs-seo-analytics.php:372
 #: php5/class-ahrefs-seo-analytics.php:374
 #: php5/class-ahrefs-seo-analytics.php:376
-#: php5/class-ahrefs-seo-api.php:151
-#: php5/class-ahrefs-seo-api.php:245
-#: php5/class-analytics-ga.php:643
-#: php5/class-analytics-ga.php:915
+#: php5/class-ahrefs-seo-api.php:156
+#: php5/class-ahrefs-seo-api.php:250
+#: php5/class-analytics-ga.php:529
 #: php7/class-ahrefs-seo-analytics.php:422
 #: php7/class-ahrefs-seo-analytics.php:424
 #: php7/class-ahrefs-seo-analytics.php:426
 #: php7/class-ahrefs-seo-analytics.php:428
-#: php7/class-ahrefs-seo-api.php:170
-#: php7/class-ahrefs-seo-api.php:270
-#: php7/class-analytics-ga.php:701
-#: php7/class-analytics-ga.php:1011
+#: php7/class-ahrefs-seo-api.php:175
+#: php7/class-ahrefs-seo-api.php:275
+#: php7/class-analytics-ga.php:577
 msgid "Connection error"
 msgstr ""
 
@@ -117,110 +117,122 @@ msgstr ""
 msgid "Request error"
 msgstr ""
 
-#: php5/class-ahrefs-seo-analytics.php:555
-#: php7/class-ahrefs-seo-analytics.php:633
+#: php5/class-ahrefs-seo-analytics.php:558
+#: php7/class-ahrefs-seo-analytics.php:636
 msgid "Your Google account has been disconnected because token has been expired or revoked. Please try to reconnect or contact support if this keeps happening."
 msgstr ""
 
 #. Translators: %s: site url
-#: php5/class-ahrefs-seo-analytics.php:565
-#: php7/class-ahrefs-seo-analytics.php:645
+#: php5/class-ahrefs-seo-analytics.php:568
+#: php7/class-ahrefs-seo-analytics.php:648
+#, php-format
 msgid "Your Google account has been disconnected because you don’t have the required permission for %s site."
 msgstr ""
 
-#: php5/class-ahrefs-seo-analytics.php:565
-#: php7/class-ahrefs-seo-analytics.php:647
+#: php5/class-ahrefs-seo-analytics.php:568
+#: php7/class-ahrefs-seo-analytics.php:650
 msgid "Your Google account has been disconnected because you don’t have the required permission for this site."
 msgstr ""
 
 #. Translators: %s: profile name
-#: php5/class-ahrefs-seo-analytics.php:571
-#: php7/class-ahrefs-seo-analytics.php:657
+#: php5/class-ahrefs-seo-analytics.php:574
+#: php7/class-ahrefs-seo-analytics.php:660
+#, php-format
 msgid "Your Google account has been disconnected because you don’t have the sufficient permissions for %s profile."
 msgstr ""
 
-#: php5/class-ahrefs-seo-analytics.php:571
-#: php7/class-ahrefs-seo-analytics.php:659
+#: php5/class-ahrefs-seo-analytics.php:574
+#: php7/class-ahrefs-seo-analytics.php:662
 msgid "Your Google account has been disconnected because you don’t have the sufficient permissions for this profile."
 msgstr ""
 
-#: php5/class-ahrefs-seo-analytics.php:575
-#: php7/class-ahrefs-seo-analytics.php:664
+#: php5/class-ahrefs-seo-analytics.php:578
+#: php7/class-ahrefs-seo-analytics.php:667
 msgid "Google Search Console account does not exists."
 msgstr ""
 
 #. Translators: %s: original error message
-#: php5/class-ahrefs-seo-analytics.php:589
-#: php7/class-ahrefs-seo-analytics.php:678
+#: php5/class-ahrefs-seo-analytics.php:592
+#: php7/class-ahrefs-seo-analytics.php:681
+#, php-format
 msgid "Your Google account has been disconnected because of error: %s"
 msgstr ""
 
-#: php5/class-ahrefs-seo-analytics.php:714
-#: php5/class-ahrefs-seo-analytics.php:738
+#: php5/class-ahrefs-seo-analytics.php:717
+#: php5/class-ahrefs-seo-analytics.php:741
 #: php5/class-analytics-client.php:97
-#: php7/class-ahrefs-seo-analytics.php:813
-#: php7/class-ahrefs-seo-analytics.php:838
+#: php7/class-ahrefs-seo-analytics.php:816
+#: php7/class-ahrefs-seo-analytics.php:841
 #: php7/class-analytics-client.php:103
 msgid "Your Google account disconnected due to an invalid token. Please try to reconnect or contact support if this keeps happening."
 msgstr ""
 
 #. Translators: 1: error code, 2: error message
-#: php5/class-ahrefs-seo-analytics.php:742
-#: php7/class-ahrefs-seo-analytics.php:842
+#: php5/class-ahrefs-seo-analytics.php:745
+#: php7/class-ahrefs-seo-analytics.php:845
+#, php-format
 msgid "There was an additional Google Auth error while refresh token %1$d: %2$s"
 msgstr ""
 
 #. Translators: 1: error code, 2: error message
-#: php5/class-ahrefs-seo-analytics.php:751
-#: php7/class-ahrefs-seo-analytics.php:851
+#: php5/class-ahrefs-seo-analytics.php:754
+#: php7/class-ahrefs-seo-analytics.php:854
+#, php-format
 msgid "There was an additional error while refresh token %1$d: %2$s"
 msgstr ""
 
-#: php5/class-ahrefs-seo-api.php:132
-#: php5/class-ahrefs-seo-api.php:181
-#: php7/class-ahrefs-seo-api.php:150
-#: php7/class-ahrefs-seo-api.php:201
+#. translators: %s: original error message.
+#: php5/class-ahrefs-seo-api.php:94
+#: php7/class-ahrefs-seo-api.php:108
+#, php-format
+msgid "Ahrefs account was disconnected: %s Please reconnect Ahrefs account."
+msgstr ""
+
+#: php5/class-ahrefs-seo-api.php:137
+#: php5/class-ahrefs-seo-api.php:186
+#: php7/class-ahrefs-seo-api.php:155
+#: php7/class-ahrefs-seo-api.php:206
 msgid "Ahrefs API get subscription info failed."
 msgstr ""
 
-#: php5/class-ahrefs-seo-api.php:135
-#: php5/class-ahrefs-seo-api.php:220
-#: php7/class-ahrefs-seo-api.php:153
-#: php7/class-ahrefs-seo-api.php:242
+#: php5/class-ahrefs-seo-api.php:140
+#: php5/class-ahrefs-seo-api.php:225
+#: php7/class-ahrefs-seo-api.php:158
+#: php7/class-ahrefs-seo-api.php:247
 msgid "Ahrefs token is required."
 msgstr ""
 
-#: php5/class-ahrefs-seo-api.php:146
-#: php7/class-ahrefs-seo-api.php:165
+#: php5/class-ahrefs-seo-api.php:151
+#: php7/class-ahrefs-seo-api.php:170
 msgid "Please try again later"
 msgstr ""
 
-#: php5/class-ahrefs-seo-api.php:199
-#: php7/class-ahrefs-seo-api.php:220
+#: php5/class-ahrefs-seo-api.php:204
+#: php7/class-ahrefs-seo-api.php:225
 msgid "Ahrefs account disconnected due to invalid token."
 msgstr ""
 
-#: php5/class-ahrefs-seo-api.php:202
+#: php5/class-ahrefs-seo-api.php:207
 #: php5/class-ahrefs-seo-screen-settings.php:128
 #: php5/class-ahrefs-seo-screen-wizard.php:71
-#: php7/class-ahrefs-seo-api.php:223
+#: php7/class-ahrefs-seo-api.php:228
 #: php7/class-ahrefs-seo-screen-settings.php:138
 #: php7/class-ahrefs-seo-screen-wizard.php:83
 msgid "The code is invalid"
 msgstr ""
 
-#: php5/class-ahrefs-seo-api.php:240
-#: php7/class-ahrefs-seo-api.php:265
+#: php5/class-ahrefs-seo-api.php:245
+#: php7/class-ahrefs-seo-api.php:270
 msgid "Empty answer"
 msgstr ""
 
-#: php5/class-ahrefs-seo-api.php:284
-#: php7/class-ahrefs-seo-api.php:312
+#: php5/class-ahrefs-seo-api.php:289
+#: php7/class-ahrefs-seo-api.php:317
 msgid "Ahrefs API get metrics extended failed."
 msgstr ""
 
-#: php5/class-ahrefs-seo-api.php:295
-#: php7/class-ahrefs-seo-api.php:323
+#: php5/class-ahrefs-seo-api.php:300
+#: php7/class-ahrefs-seo-api.php:328
 msgid "Limited Ahrefs account detected."
 msgstr ""
 
@@ -275,6 +287,7 @@ msgstr ""
 #. translators: 1: error type, 2: file path
 #: php5/class-ahrefs-seo-compatibility.php:116
 #: php7/class-ahrefs-seo-compatibility.php:121
+#, php-format
 msgid "Unexpected \"%1$s\" error in file %2$s"
 msgstr ""
 
@@ -283,18 +296,21 @@ msgstr ""
 #: php5/class-ahrefs-seo-compatibility.php:258
 #: php7/class-ahrefs-seo-compatibility.php:258
 #: php7/class-ahrefs-seo-compatibility.php:279
+#, php-format
 msgid "version %s"
 msgstr ""
 
 #. Translators: %s: author name
 #: php5/class-ahrefs-seo-compatibility.php:260
 #: php7/class-ahrefs-seo-compatibility.php:281
+#, php-format
 msgid "by %s"
 msgstr ""
 
 #. translators: 1: plugin name or comma separated list of plugin names, 2: expanded to 'Ahrefs SEO'
 #: php5/class-ahrefs-seo-compatibility.php:284
 #: php7/class-ahrefs-seo-compatibility.php:306
+#, php-format
 msgid "We’ve scanned your WordPress environment and discovered %1$s which is conflicting with the %2$s plugin. Please pause the plugin by deactivating it before running content audit again."
 msgid_plural "We’ve scanned your WordPress environment and discovered %1$s which are conflicting with the %2$s plugin. Please pause these plugins by deactivating them before running content audit again."
 msgstr[0] ""
@@ -303,12 +319,14 @@ msgstr[1] ""
 #. translators: 1: theme name, 2: expanded to 'Ahrefs SEO'
 #: php5/class-ahrefs-seo-compatibility.php:292
 #: php7/class-ahrefs-seo-compatibility.php:318
+#, php-format
 msgid "We’ve scanned your WordPress environment and discovered %1$s, which is incompatible with the %2$s plugin. Please switch the theme before running content audit again."
 msgstr ""
 
 #. translators: 1: file name or comma separated list of file names, 2: expanded to 'Ahrefs SEO'
 #: php5/class-ahrefs-seo-compatibility.php:306
 #: php7/class-ahrefs-seo-compatibility.php:329
+#, php-format
 msgid "File %1$s has code incompatible with %2$s plugin."
 msgid_plural "One of files %1$s have code incompatible with %2$s plugin."
 msgstr[0] ""
@@ -332,6 +350,7 @@ msgstr ""
 #. translators: %s: number of waiting weeks or months
 #: php5/class-ahrefs-seo-content.php:72
 #: php7/class-ahrefs-seo-content.php:77
+#, php-format
 msgid "%s month"
 msgid_plural "%s months"
 msgstr[0] ""
@@ -340,6 +359,7 @@ msgstr[1] ""
 #. translators: %s: number of waiting weeks or months
 #: php5/class-ahrefs-seo-content.php:72
 #: php7/class-ahrefs-seo-content.php:77
+#, php-format
 msgid "%s week"
 msgid_plural "%s weeks"
 msgstr[0] ""
@@ -420,6 +440,7 @@ msgstr ""
 #. translators: %s: text "Ahrefs support" with link
 #: php5/class-ahrefs-seo-db.php:293
 #: php7/class-ahrefs-seo-db.php:313
+#, php-format
 msgid "CREATE command denied. The database user doesn't have permission to run CREATE queries. Please ask your server host to grant this permission or contact %s for help."
 msgstr ""
 
@@ -441,30 +462,35 @@ msgstr ""
 #. translators: %s: text "Ahrefs support" with link
 #: php5/class-ahrefs-seo-db.php:303
 #: php7/class-ahrefs-seo-db.php:327
+#, php-format
 msgid "ALTER command denied. The database user doesn't have permission to run ALTER queries. Please ask your server host to grant this permission or contact %s for help."
 msgstr ""
 
 #. translators: %s: text "Ahrefs support" with link
 #: php5/class-ahrefs-seo-db.php:313
 #: php7/class-ahrefs-seo-db.php:341
+#, php-format
 msgid "DROP command failed. Either ALTER or DROP database actions failed due to a misconfiguration or error on the server. Please check with your server host to fix this or contact %s for help."
 msgstr ""
 
 #. translators: %s: text "Ahrefs support" with link
 #: php5/class-ahrefs-seo-db.php:323
 #: php7/class-ahrefs-seo-db.php:355
+#, php-format
 msgid "Duplicate key name error. The database user doesn't have permission to perform ALTER or DROP database actions due to a misconfiguration or error on the server. Please check with your server host to fix this or contact %s for help."
 msgstr ""
 
 #. translators: %s: text "Ahrefs support" with link
 #: php5/class-ahrefs-seo-db.php:333
 #: php7/class-ahrefs-seo-db.php:369
+#, php-format
 msgid "Multiple primary key defined. The database user doesn't have permission to perform ALTER or DROP database actions due to a misconfiguration or error on the server. Please check with your server host to fix this or contact %s for help."
 msgstr ""
 
 #. translators: %s: text "Ahrefs support" with link
 #: php5/class-ahrefs-seo-db.php:343
 #: php7/class-ahrefs-seo-db.php:383
+#, php-format
 msgid "Unknown column error. The database user doesn't have permission to perform ALTER or DROP database actions due to a misconfiguration or error on the server. Please check with your server host to fix this or contact %s for help."
 msgstr ""
 
@@ -618,6 +644,7 @@ msgstr ""
 #. translators: %d: value
 #: php5/class-ahrefs-seo-screen-content.php:530
 #: php7/class-ahrefs-seo-screen-content.php:575
+#, php-format
 msgid "%d ref. domain"
 msgid_plural "%d ref. domains"
 msgstr[0] ""
@@ -633,6 +660,7 @@ msgstr ""
 #. translators: 1: number of pages, 2: list of pages
 #: php5/class-ahrefs-seo-screen-content.php:580
 #: php7/class-ahrefs-seo-screen-content.php:627
+#, php-format
 msgid "Sorry, you do not have sufficient permissions to update %1$d page %2$s"
 msgid_plural "Sorry, you do not have sufficient permissions to update %1$d pages\t %2$s"
 msgstr[0] ""
@@ -641,6 +669,7 @@ msgstr[1] ""
 #. translators: 1: number of pages, 2: list of pages
 #: php5/class-ahrefs-seo-screen-content.php:601
 #: php7/class-ahrefs-seo-screen-content.php:649
+#, php-format
 msgid "This %1$d page is already included in the audit: %2$s"
 msgid_plural "These %1$d pages are already included in the audit: %2$s."
 msgstr[0] ""
@@ -649,6 +678,7 @@ msgstr[1] ""
 #. translators: 1: number of pages, 2: list of pages
 #: php5/class-ahrefs-seo-screen-content.php:615
 #: php7/class-ahrefs-seo-screen-content.php:664
+#, php-format
 msgid "This %1$d page is already excluded from the audit: %2$s"
 msgid_plural "These %1$d page are already excluded from the audit: %2$s."
 msgstr[0] ""
@@ -926,6 +956,7 @@ msgstr ""
 #. Translators: %s: country code
 #: php5/class-ahrefs-seo-table-content.php:296
 #: php7/class-ahrefs-seo-table-content.php:343
+#, php-format
 msgctxt "Table column title"
 msgid "Position in %s"
 msgstr ""
@@ -933,6 +964,7 @@ msgstr ""
 #. Translators: %s: number of weeks or months: "12 weeks" or "3 months"
 #: php5/class-ahrefs-seo-table-content.php:301
 #: php7/class-ahrefs-seo-table-content.php:349
+#, php-format
 msgid "This metric is retrieved from your Google Analytics account. It is the monthly average traffic from all sources to this page, acquired in the last %s."
 msgstr ""
 
@@ -945,6 +977,7 @@ msgstr ""
 #. Translators: %s: number of weeks or months: "12 weeks" or "3 months"
 #: php5/class-ahrefs-seo-table-content.php:310
 #: php7/class-ahrefs-seo-table-content.php:358
+#, php-format
 msgid "This metric is retrieved from your Google Analytics account. It includes only monthly average traffic from organic search to this page, acquired in the last %s."
 msgstr ""
 
@@ -993,6 +1026,7 @@ msgstr ""
 #. Translators: %s: expanded to "content audit settings" with a link
 #: php5/class-ahrefs-seo-table-content.php:324
 #: php7/class-ahrefs-seo-table-content.php:382
+#, php-format
 msgid "Recommended based on the traffic, backlinks & waiting time thresholds you’ve set in the %s."
 msgstr ""
 
@@ -1034,6 +1068,7 @@ msgstr ""
 #. translators: %s: Post title.
 #: php5/class-ahrefs-seo-table-content.php:384
 #: php7/class-ahrefs-seo-table-content.php:465
+#, php-format
 msgid "&#8220;%s&#8221; (Edit)"
 msgstr ""
 
@@ -1224,6 +1259,7 @@ msgstr ""
 #. translators: %s: post title
 #: php5/class-ahrefs-seo-table-content.php:947
 #: php7/class-ahrefs-seo-table-content.php:999
+#, php-format
 msgid "Edit &#8220;%s&#8221;"
 msgstr ""
 
@@ -1237,6 +1273,7 @@ msgstr ""
 #. translators: %s: post title
 #: php5/class-ahrefs-seo-table-content.php:956
 #: php7/class-ahrefs-seo-table-content.php:1009
+#, php-format
 msgid "View &#8220;%s&#8221;"
 msgstr ""
 
@@ -1314,6 +1351,7 @@ msgstr ""
 #. translators: %s: post title
 #: php5/class-ahrefs-seo-table-content.php:992
 #: php7/class-ahrefs-seo-table-content.php:1090
+#, php-format
 msgid "Approve keyword for &#8220;%s&#8221;"
 msgstr ""
 
@@ -1327,6 +1365,7 @@ msgstr ""
 #. translators: %s: post title
 #: php5/class-ahrefs-seo-table-content.php:1000
 #: php7/class-ahrefs-seo-table-content.php:1099
+#, php-format
 msgid "Change keyword for &#8220;%s&#8221;"
 msgstr ""
 
@@ -1360,6 +1399,7 @@ msgstr ""
 #. translators: 1: month name, 2: 4-digit year
 #: php5/class-ahrefs-seo-table-content.php:1095
 #: php7/class-ahrefs-seo-table-content.php:1189
+#, php-format
 msgid "%1$s %2$d"
 msgstr ""
 
@@ -1441,6 +1481,7 @@ msgstr ""
 #. translators: %s: number of items
 #: php5/class-ahrefs-seo-table.php:143
 #: php7/class-ahrefs-seo-table.php:166
+#, php-format
 msgid "%s item"
 msgid_plural "%s items"
 msgstr[0] ""
@@ -1592,6 +1633,7 @@ msgstr ""
 #. translators: %d: number of items to show
 #: php5/class-ahrefs-seo-view.php:244
 #: php7/class-ahrefs-seo-view.php:266
+#, php-format
 msgid "Show %d more"
 msgstr ""
 
@@ -1669,53 +1711,41 @@ msgstr ""
 msgid "Google account disconnected."
 msgstr ""
 
-#: php5/class-analytics-ga.php:170
-#: php7/class-analytics-ga.php:176
+#: php5/class-analytics-ga.php:167
+#: php7/class-analytics-ga.php:175
 msgid "Google Analytics API: failed to get the list of accounts."
 msgstr ""
 
-#: php5/class-analytics-ga.php:258
-#: php7/class-analytics-ga.php:276
+#: php5/class-analytics-ga.php:255
+#: php7/class-analytics-ga.php:275
 msgid "Could not receive a list of Google accounts. Google Analytics API returned an error. Please try again later or contact Ahrefs support to get it resolved."
 msgstr ""
 
-#: php5/class-analytics-ga.php:319
-#: php5/class-analytics-ga.php:321
-#: php7/class-analytics-ga.php:338
-#: php7/class-analytics-ga.php:340
+#: php5/class-analytics-ga.php:316
+#: php5/class-analytics-ga.php:318
+#: php7/class-analytics-ga.php:337
+#: php7/class-analytics-ga.php:339
 msgid "Google Analytics Admin API: failed to get the list of accounts."
 msgstr ""
 
-#. Translators: part of "default view"
-#: php5/class-analytics-ga.php:344
-#: php5/class-analytics-ga.php:428
-#: php7/class-analytics-ga.php:365
-#: php7/class-analytics-ga.php:458
-msgid "default"
-msgstr ""
-
-#: php5/class-analytics-ga.php:361
-#: php7/class-analytics-ga.php:384
-msgid "Google Analytics Management API: failed to get the list of accounts."
-msgstr ""
-
-#: php5/class-analytics-ga.php:453
-#: php7/class-analytics-ga.php:485
+#: php5/class-analytics-ga.php:338
+#: php7/class-analytics-ga.php:361
 msgid "Analytics disconnected."
 msgstr ""
 
-#: php5/class-analytics-ga.php:458
-#: php7/class-analytics-ga.php:491
+#: php5/class-analytics-ga.php:343
+#: php7/class-analytics-ga.php:367
 msgid "Please choose Analytics profile."
 msgstr ""
 
 #. Translators: 1: version string, 2: function name, 3: line number
-#: php5/class-analytics-ga.php:580
-#: php5/class-analytics-ga.php:588
-#: php5/class-analytics-ga.php:597
-#: php7/class-analytics-ga.php:631
-#: php7/class-analytics-ga.php:640
-#: php7/class-analytics-ga.php:651
+#: php5/class-analytics-ga.php:466
+#: php5/class-analytics-ga.php:474
+#: php5/class-analytics-ga.php:483
+#: php7/class-analytics-ga.php:507
+#: php7/class-analytics-ga.php:516
+#: php7/class-analytics-ga.php:527
+#, php-format
 msgid "Unsupported Google Analytics Data API version %1$s at %2$s line %3$d"
 msgstr ""
 
@@ -1737,12 +1767,14 @@ msgstr ""
 #. translators: 1: domain name, 2: domain name
 #: php5/class-analytics-gsc.php:698
 #: php7/class-analytics-gsc.php:815
+#, php-format
 msgid "Google Search Console has an invalid domain (current domain: %1$s, selected: %2$s)."
 msgstr ""
 
 #. Translators: %s: current permission level string
 #: php5/class-analytics-gsc.php:707
 #: php7/class-analytics-gsc.php:825
+#, php-format
 msgid "Google Search Console has an invalid permission level (%s)."
 msgstr ""
 
@@ -1752,19 +1784,20 @@ msgid "Content audit table update failed"
 msgstr ""
 
 #. translators: %s: is a date
-#: php5/class-content-audit.php:1424
-#: php7/class-content-audit.php:1536
+#: php5/class-content-audit.php:1394
+#: php7/class-content-audit.php:1499
+#, php-format
 msgid "Your scheduled audit on %s did not run as planned."
 msgstr ""
 
 #. translators: %s: is a date
-#: php5/class-content-audit.php:1424
-#: php7/class-content-audit.php:1536
+#: php5/class-content-audit.php:1394
+#: php7/class-content-audit.php:1499
 msgid "Your scheduled audit did not run as planned."
 msgstr ""
 
-#: php5/class-content-audit.php:1506
-#: php7/class-content-audit.php:1622
+#: php5/class-content-audit.php:1476
+#: php7/class-content-audit.php:1585
 msgid "Last audit was cancelled."
 msgstr ""
 
@@ -1816,6 +1849,7 @@ msgstr ""
 #. Translators: %s: service URL
 #: php5/class-google-proxy-client.php:190
 #: php7/class-google-proxy-client.php:203
+#, php-format
 msgid "Can not connect to proxy service (%s). Please try again or contact support if this keeps happening."
 msgstr ""
 
@@ -1867,6 +1901,7 @@ msgstr ""
 #. translators: %d: ID of a post.
 #: php5/class-post-tax.php:256
 #: php7/class-post-tax.php:278
+#, php-format
 msgid "#%d (no title)"
 msgstr ""
 
@@ -1921,6 +1956,7 @@ msgstr ""
 #. Translators: %s: string with error code
 #: php5/export/class-export-audit-data.php:130
 #: php7/export/class-export-audit-data.php:143
+#, php-format
 msgid "Could not create zip archive. Error code %s"
 msgstr ""
 
@@ -1977,12 +2013,14 @@ msgstr ""
 #. translators: %s: token
 #: php5/messages/class-message.php:227
 #: php7/messages/class-message.php:249
+#, php-format
 msgid "Your Free Ahrefs account has been disconnected because token %s has been expired or revoked."
 msgstr ""
 
 #. translators: %s: token
 #: php5/messages/class-message.php:227
 #: php7/messages/class-message.php:251
+#, php-format
 msgid "Your Ahrefs account has been disconnected because token %s has been expired or revoked."
 msgstr ""
 
@@ -1994,6 +2032,7 @@ msgstr ""
 #. Translators: %s: plan name
 #: php5/messages/class-message.php:254
 #: php7/messages/class-message.php:282
+#, php-format
 msgid "Your Ahrefs account has been disconnected because you have used up all monthly integration rows available on your %s plan. Please consider upgrading your plan now or wait until your limits reset. The report will not be updated till the limits are reset."
 msgstr ""
 
@@ -2010,6 +2049,7 @@ msgstr ""
 #. Translators: %s: source of issue
 #: php5/messages/class-message.php:293
 #: php7/messages/class-message.php:323
+#, php-format
 msgid "We are experiencing some downtime from %s so the content audit run is taking a little longer than usual. The audit is still running in the background so please check back in a couple of minutes! The content audit will be delayed by approximately 15 minutes."
 msgstr ""
 
@@ -3233,6 +3273,7 @@ msgstr ""
 #: php7/templates/fatal.php:24
 #: php7/templates/parts/dynamic/error.php:23
 #: php7/templates/parts/notices/please-contact.php:26
+#, php-format
 msgid "Oops, seems like there was an error. Please %s to get it resolved."
 msgstr ""
 
@@ -3310,6 +3351,7 @@ msgstr ""
 #. translators: %s: current keyword in bold
 #: php5/templates/parts/action-parts/approve-keyword-tip.php:19
 #: php7/templates/parts/action-parts/approve-keyword-tip.php:22
+#, php-format
 msgid "You haven’t confirmed %s as the target keyword for this page. Please approve it if it’s the keyword that you optimized the page for."
 msgstr ""
 
@@ -3321,6 +3363,7 @@ msgstr ""
 #. translators: %d: number of pages
 #: php5/templates/parts/action-parts/pages-linking.php:10
 #: php7/templates/parts/action-parts/pages-linking.php:11
+#, php-format
 msgid "%d page linking to this"
 msgid_plural "%d pages linking to this"
 msgstr[0] ""
@@ -3364,6 +3407,7 @@ msgstr ""
 #. translators: %d: number of backlinks
 #: php5/templates/parts/action-parts/pages-performance.php:75
 #: php7/templates/parts/action-parts/pages-performance.php:52
+#, php-format
 msgid "%d backlink was obtained"
 msgid_plural "%d backlinks were obtained"
 msgstr[0] ""
@@ -3397,6 +3441,7 @@ msgstr ""
 #. translators: %s: number of referring domains
 #: php5/templates/parts/action-steps/analyze-backlinks.php:27
 #: php7/templates/parts/action-steps/analyze-backlinks.php:29
+#, php-format
 msgid "%s ref. domain"
 msgid_plural "%s ref. domains"
 msgstr[0] ""
@@ -3444,6 +3489,7 @@ msgstr ""
 #. translators: %d: number of pages
 #: php5/templates/parts/action-steps/consolidate.php:25
 #: php7/templates/parts/action-steps/consolidate.php:17
+#, php-format
 msgid "%d well-performing page on the same topic"
 msgid_plural "%d Well-performing pages on the same topic"
 msgstr[0] ""
@@ -3452,6 +3498,7 @@ msgstr[1] ""
 #. translators: %d: number of pages
 #: php5/templates/parts/action-steps/consolidate.php:42
 #: php7/templates/parts/action-steps/consolidate.php:35
+#, php-format
 msgid "%d under-performing page that can be merged with the well-performing one"
 msgid_plural "%d under-performing pages that can be merged with the well-performing one"
 msgstr[0] ""
@@ -3460,6 +3507,7 @@ msgstr[1] ""
 #. translators: %d: number of pages
 #: php5/templates/parts/action-steps/consolidate.php:45
 #: php7/templates/parts/action-steps/consolidate.php:38
+#, php-format
 msgid "%d page that can be merged into one"
 msgid_plural "%d pages that can be merged into one"
 msgstr[0] ""
@@ -3473,12 +3521,14 @@ msgstr ""
 #. translators: %s: keyword
 #: php5/templates/parts/action-steps/cover-topic.php:21
 #: php7/templates/parts/action-steps/cover-topic.php:21
+#, php-format
 msgid "Revamp the article to cover the %s topic better"
 msgstr ""
 
 #. translators: %s: keyword
 #: php5/templates/parts/action-steps/cover-topic.php:27
 #: php7/templates/parts/action-steps/cover-topic.php:27
+#, php-format
 msgid "Cover the %s topic better"
 msgstr ""
 
@@ -3502,6 +3552,7 @@ msgstr ""
 #. translators: %s: keyword
 #: php5/templates/parts/action-steps/is-page-important.php:16
 #: php7/templates/parts/action-steps/is-page-important.php:17
+#, php-format
 msgid "Decide if ranking for %s is important"
 msgstr ""
 
@@ -3554,6 +3605,7 @@ msgstr ""
 #. translators: %s: keyword
 #: php5/templates/parts/action-steps/match-search-intent.php:15
 #: php7/templates/parts/action-steps/match-search-intent.php:16
+#, php-format
 msgid "Match search intent for %s"
 msgstr ""
 
@@ -3570,6 +3622,7 @@ msgstr ""
 #. translators: %s: current keyword
 #: php5/templates/parts/action-steps/match-search-intent.php:33
 #: php7/templates/parts/action-steps/match-search-intent.php:34
+#, php-format
 msgid "SERP for %s"
 msgstr ""
 
@@ -3683,6 +3736,7 @@ msgstr ""
 #. translators: %s: traffic median value
 #: php5/templates/parts/actions/exclude.php:43
 #: php7/templates/parts/actions/exclude.php:33
+#, php-format
 msgid "According to Google Analytics, your website’s pages get a median of %s traffic every month."
 msgstr ""
 
@@ -3845,6 +3899,7 @@ msgstr ""
 #. Translators: 1: number of well performing pages, 2: total pages count
 #: php5/templates/parts/charts/score-block.php:69
 #: php7/templates/parts/charts/score-block.php:62
+#, php-format
 msgid "%1$d well performing pages out of %2$d"
 msgstr ""
 
@@ -4057,6 +4112,7 @@ msgstr ""
 #. translators: %s: link to plugin settings.
 #: php5/templates/parts/first-audit.php:33
 #: php7/templates/parts/first-audit.php:35
+#, php-format
 msgid "Start your first content audit. Don't forget to check the %s just in case."
 msgstr ""
 
@@ -4110,18 +4166,21 @@ msgstr ""
 #. translators: %s: one or more things, recommended to include
 #: php5/templates/parts/options-tips/include-cpt.php:26
 #: php7/templates/parts/options-tips/include-cpt.php:27
+#, php-format
 msgid "Tip: Include the %s"
 msgstr ""
 
 #. translators: %s: one or more things, recommended to include
 #: php5/templates/parts/options-tips/include-cpt.php:32
 #: php7/templates/parts/options-tips/include-cpt.php:33
+#, php-format
 msgid "We’ve detected %s on your site. Check the options below to include them in the audit."
 msgstr ""
 
 #. translators: %s: current domain
 #: php5/templates/parts/options-tips/incorrect.php:11
 #: php7/templates/parts/options-tips/incorrect.php:11
+#, php-format
 msgid "Google profiles selected don't match %s"
 msgstr ""
 
@@ -4269,6 +4328,7 @@ msgstr ""
 #. translators: %s: number of data rows left
 #: php5/templates/parts/options/ahrefs-connected.php:11
 #: php7/templates/parts/options/ahrefs-connected.php:15
+#, php-format
 msgid "%s left"
 msgstr ""
 
@@ -4387,6 +4447,7 @@ msgstr ""
 #. Translators: %d: number of seconds.
 #: php5/templates/parts/options/delay.php:86
 #: php7/templates/parts/options/delay.php:62
+#, php-format
 msgid "%d seconds"
 msgstr ""
 
@@ -4489,6 +4550,7 @@ msgstr ""
 #. Translators: %s: Google Analytics view name
 #: php5/templates/parts/options/include/select-ga.php:51
 #: php7/templates/parts/options/include/select-ga.php:37
+#, php-format
 msgctxt "view: name of view from Google Analytics"
 msgid "view: %s"
 msgstr ""
@@ -4496,6 +4558,7 @@ msgstr ""
 #. Translators: %s: Google Analytics Data stream name
 #: php5/templates/parts/options/include/select-ga.php:51
 #: php7/templates/parts/options/include/select-ga.php:42
+#, php-format
 msgctxt "stream: name of stream from Google Analytics"
 msgid "stream: %s"
 msgstr ""
@@ -4512,6 +4575,7 @@ msgstr ""
 #. Translators: %s: site name
 #: php5/templates/parts/options/include/select-ga.php:53
 #: php7/templates/parts/options/include/select-ga.php:48
+#, php-format
 msgctxt "site: sites list from Google Analytics"
 msgid " | site: %s"
 msgstr ""
@@ -4519,6 +4583,7 @@ msgstr ""
 #. translators: %s: comma separated list of sites
 #: php5/templates/parts/options/include/select-ga.php:78
 #: php7/templates/parts/options/include/select-ga.php:67
+#, php-format
 msgid "site: %s"
 msgid_plural "sites: %s"
 msgstr[0] ""
@@ -4581,6 +4646,7 @@ msgstr ""
 #. translators: %s: human-readable interval, like "2 days"
 #: php5/templates/parts/options/schedule.php:147
 #: php7/templates/parts/options/schedule.php:117
+#, php-format
 msgid "The next content audit run is scheduled in: %s."
 msgstr ""
 
@@ -4626,6 +4692,7 @@ msgstr ""
 #. translators: %s: text "our support team" with link
 #: php5/templates/parts/options/share-audit-data.php:21
 #: php7/templates/parts/options/share-audit-data.php:24
+#, php-format
 msgid "Download the latest audit data as a ZIP archive containing multiple CSV files. If you run into issues, %s might ask you to share this file in order to investigate."
 msgstr ""
 
@@ -4664,6 +4731,7 @@ msgstr ""
 #. translators: %s: text "our support team" with link
 #: php5/templates/parts/options/share-config.php:25
 #: php7/templates/parts/options/share-config.php:32
+#, php-format
 msgid "The string below contains information about your Google account tokens and currently selected GA and GSC profiles. If you run into issues when connecting Google accounts, %s might ask you to share this string in order to investigate."
 msgstr ""
 
@@ -4705,6 +4773,7 @@ msgstr ""
 #. translators: %s and %s: time for waiting, like "3 months" or "12 weeks"
 #: php5/templates/parts/options/tresholds.php:32
 #: php7/templates/parts/options/tresholds.php:30
+#, php-format
 msgid "Any page that was published or updated below this threshold will be excluded from the analysis. For example, if you set a value of %1$s here and your page was published less than %2$s ago it will be excluded from this analysis."
 msgstr ""
 
@@ -4716,6 +4785,7 @@ msgstr ""
 #. translators: %s: Link to help article with "how to choose the right target keyword." anchor.
 #: php5/templates/parts/popups/keywords-list.php:62
 #: php7/templates/parts/popups/keywords-list.php:55
+#, php-format
 msgid "The content audit is based on your article’s ranking performance for this keyword. Learn more on %s"
 msgstr ""
 
@@ -4848,5 +4918,6 @@ msgstr ""
 #. Translators: %s: URL
 #: php5/workers/class-worker-traffic.php:201
 #: php7/workers/class-worker-traffic.php:219
+#, php-format
 msgid "Traffic values update failed for %s"
 msgstr ""

@@ -25,9 +25,9 @@ $count   = isset( $locals['count'] ) ? $locals['count'] : 1;
 		<span class="ahrefs-messages-count
 		<?php
 		echo esc_attr( 1 === $count ? ' hidden' : '' ); ?>">
-	<?php
-		echo esc_html( "{$count}" );
-	?>
+<?php
+echo esc_html( "{$count}" );
+?>
 </span>
 	</p>
 </div>

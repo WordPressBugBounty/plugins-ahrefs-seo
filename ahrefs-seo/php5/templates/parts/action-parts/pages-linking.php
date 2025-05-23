@@ -35,11 +35,11 @@ if ( ! empty( $items ) ) {
 						if ( $url_edit ) {
 							?>
 							<a class="row-action-item" href="<?php echo esc_attr( $url_edit ); ?>">
-																		<?php
-																		esc_html_e( 'Edit', 'ahrefs-seo' );
-																		?>
+							<?php
+									esc_html_e( 'Edit', 'ahrefs-seo' );
+							?>
 			</a>
-										<?php
+							<?php
 						}
 						if ( $url_edit && $url_view ) {
 							?>
@@ -49,11 +49,11 @@ if ( ! empty( $items ) ) {
 						if ( $url_view ) {
 							?>
 							<a class="row-action-item" href="<?php echo esc_attr( $url_view ); ?>">
-																		<?php
-																		esc_html_e( 'View', 'ahrefs-seo' );
-																		?>
+							<?php
+							esc_html_e( 'View', 'ahrefs-seo' );
+							?>
 			</a>
-										<?php
+							<?php
 						}
 						?>
 					</div>

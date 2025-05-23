@@ -22,9 +22,9 @@ esc_html_e( 'Country', 'ahrefs-seo' );
 			foreach ( $list as $code => $name ) {
 				?>
 				<option value="<?php echo esc_attr( $code ); ?>"
-											<?php
-											selected( $country, $code );
-											?>
+				<?php
+				selected( $country, $code );
+				?>
 	>
 				<?php
 				echo esc_html( $name );

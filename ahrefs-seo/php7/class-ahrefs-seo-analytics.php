@@ -595,6 +595,9 @@ class Ahrefs_Seo_Analytics extends Ahrefs_Seo_Abstract_Api {
 		if ( 0 === strpos( $result, 'www.' ) ) {
 			$result = substr( $result, 4 );
 		}
+		if ( false === $result ) {
+			return '';
+		}
 
 		return $result;
 	}

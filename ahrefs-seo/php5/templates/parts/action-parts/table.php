@@ -22,9 +22,9 @@ if ( count( $items ) ) {
 				if ( filter_var( $value, FILTER_VALIDATE_URL ) ) {
 					?>
 				<a href="<?php echo esc_attr( $value ); ?>" target="blank">
-									<?php
-									echo esc_html( $value );
-									?>
+					<?php
+					echo esc_html( $value );
+					?>
 			</a>
 					<?php
 				} else {

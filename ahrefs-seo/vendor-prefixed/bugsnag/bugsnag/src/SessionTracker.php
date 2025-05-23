@@ -100,7 +100,7 @@ class SessionTracker
      *                                is deprecated and $http will be required
      *                                in the next major version.
      */
-    public function __construct(\Bugsnag\Configuration $config, \Bugsnag\HttpClient $http = null)
+    public function __construct(\Bugsnag\Configuration $config, $http = null)
     {
         $this->config = $config;
         $this->http = $http === null ? new \Bugsnag\HttpClient($config, $config->getSessionClient()) : $http;

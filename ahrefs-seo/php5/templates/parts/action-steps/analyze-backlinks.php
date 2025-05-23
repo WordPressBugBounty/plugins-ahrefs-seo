@@ -62,9 +62,9 @@ if ( $keyword ) {
 		?>
 		<p class="with-button">
 			<a class="button link-like-button" href="<?php echo esc_attr( $url ); ?>" target="_blank">
-																<?php
-																esc_html_e( 'Compare to SERP competitors', 'ahrefs-seo' );
-																?>
+			<?php
+			esc_html_e( 'Compare to SERP competitors', 'ahrefs-seo' );
+			?>
 	</a>
 			<a class="link-question" href="https://ahrefs.com/blog/how-to-get-backlinks/" target="_blank">
 			<?php

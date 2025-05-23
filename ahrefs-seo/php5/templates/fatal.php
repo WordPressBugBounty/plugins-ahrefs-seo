@@ -52,9 +52,9 @@ if ( $locals['has_reset_button'] ) {
 	?>
 	<div>
 		<a class="button" id="fatal_reset_button" href="<?php echo esc_attr( $url ); ?>">
-																	<?php
-																	esc_html_e( 'Retry', 'ahrefs-seo' );
-																	?>
+		<?php
+		esc_html_e( 'Retry', 'ahrefs-seo' );
+		?>
 	</a>
 	</div>
 	<?php

@@ -19,9 +19,9 @@ $url    = add_query_arg( [ 'keywords' => Ahrefs_Seo_Table_Content::FILTER_KEYWOR
 	</div>
 	<div class="buttons">
 		<a class="button button-primary content_tip_show_duplicated" href="<?php echo esc_attr( $url ); ?>">
-																						<?php
-																						esc_html_e( 'View keyword duplicates', 'ahrefs-seo' );
-																						?>
+		<?php
+		esc_html_e( 'View keyword duplicates', 'ahrefs-seo' );
+		?>
 		</a>
 		<a class="link" href="https://ahrefs.com/blog/keyword-cannibalization/" target="_blank">
 		<?php

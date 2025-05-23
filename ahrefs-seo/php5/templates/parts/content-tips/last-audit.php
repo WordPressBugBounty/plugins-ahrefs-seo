@@ -53,9 +53,9 @@ $can_run_audit = Ahrefs_Seo_Data_Content::get()->can_run_new_audit();
 		if ( current_user_can( Ahrefs_Seo::CAP_SETTINGS_SCHEDULE_VIEW ) ) {
 			?>
 			<a class="uirole-target-settings-schedule link content-audit-schedule" href="<?php echo esc_attr( $link ); ?>"><span></span>
-																									<?php
-																									esc_html_e( 'Set up a schedule', 'ahrefs-seo' );
-																									?>
+			<?php
+			esc_html_e( 'Set up a schedule', 'ahrefs-seo' );
+			?>
 	</a>
 			<?php
 		}

@@ -16,9 +16,9 @@ $is_enabled       = $locals['is_enabled'];
 	<span class="show-my-google-config show-collapsed block-subtitle">
 		<label>
 			<input type="checkbox" value="1" name="<?php echo esc_attr( $var_enabled_name ); ?>" class="checkbox-main" 
-																<?php
-																checked( $is_enabled );
-																?>
+			<?php
+			checked( $is_enabled );
+			?>
 			>
 			<?php
 			echo esc_html( $title );

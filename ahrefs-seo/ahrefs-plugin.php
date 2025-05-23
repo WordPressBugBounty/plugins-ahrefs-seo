@@ -5,7 +5,7 @@ Plugin URI: https://ahrefs.com/wordpress-seo-plugin
 Description: Automate content audits and grow organic traffic to your WordPress website with Ahrefs SEO plugin.
 Author: Ahrefs
 Author URI: https://ahrefs.com/
-Version: 0.10.4
+Version: 0.10.5
 Requires at least: 5.0
 Requires PHP: 5.6
 Text Domain: ahrefs-seo
@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'AHREFS_SEO_VERSION', '0.10.4' );
+define( 'AHREFS_SEO_VERSION', '0.10.5' );
 define( 'AHREFS_SEO_RELEASE', 'production' );
 
 // check minimal php version.

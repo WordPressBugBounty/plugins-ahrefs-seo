@@ -29,9 +29,9 @@ echo esc_attr( $not_dismissible ? '' : ' is-dismissible' ); ?>" id="<?php echo e
 			<span class="ahrefs-messages-count
 			<?php
 			echo esc_attr( 1 === $count ? ' hidden' : '' ); ?>">
-	<?php
-		echo esc_html( "{$count}" );
-	?>
+<?php
+echo esc_html( "{$count}" );
+?>
 </span>
 		</p>
 	</div>

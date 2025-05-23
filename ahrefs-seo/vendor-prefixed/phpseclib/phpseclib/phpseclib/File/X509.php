@@ -2756,7 +2756,7 @@ class X509
             }
             $this->currentCert['certificationRequestInfo']['subjectPKInfo'] = $publicKey;
         } else {
-            $this->currentCert = array('certificationRequestInfo' => array('version' => 'v1', 'subject' => $this->dn, 'subjectPKInfo' => $publicKey), 'signatureAlgorithm' => array('algorithm' => $signatureAlgorithm), 'signature' => \false);
+            $this->currentCert = array('certificationRequestInfo' => array('version' => 'v1', 'subject' => $this->dn, 'subjectPKInfo' => $publicKey, 'attributes' => array()), 'signatureAlgorithm' => array('algorithm' => $signatureAlgorithm), 'signature' => \false);
         }
         // resync $this->signatureSubject
         // save $certificationRequestInfo in case there are any \phpseclib\File\ASN1\Element objects in it
@@ -2879,12 +2879,12 @@ class X509
         $version = isset($tbsCertList['version']) ? $tbsCertList['version'] : 0;
         if (!$version) {
             if (!empty($tbsCertList['crlExtensions'])) {
-                $version = 1;
+                $version = 'v2';
                 // v2.
             } elseif (!empty($tbsCertList['revokedCertificates'])) {
                 foreach ($tbsCertList['revokedCertificates'] as $cert) {
                     if (!empty($cert['crlEntryExtensions'])) {
-                        $version = 1;
+                        $version = 'v2';
                         // v2.
                     }
                 }

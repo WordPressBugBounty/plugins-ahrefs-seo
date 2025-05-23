@@ -11,7 +11,6 @@ use ahrefs\AhrefsSeo_Vendor\Google\Service\AnalyticsData\RunReportRequest;
 use ahrefs\AhrefsSeo_Vendor\Google\Service\AnalyticsData\RunReportResponse;
 use ahrefs\AhrefsSeo_Vendor\Google\Service\GoogleAnalyticsAdmin;
 use ahrefs\AhrefsSeo_Vendor\Google_Http_Batch;
-use ahrefs\AhrefsSeo_Vendor\Google_Service_Analytics;
 use ahrefs\AhrefsSeo_Vendor\Google_Service_AnalyticsData;
 use ahrefs\AhrefsSeo_Vendor\Google_Service_AnalyticsData_DateRange;
 use ahrefs\AhrefsSeo_Vendor\Google_Service_AnalyticsData_Dimension;
@@ -20,14 +19,6 @@ use ahrefs\AhrefsSeo_Vendor\Google_Service_AnalyticsData_FilterExpression;
 use ahrefs\AhrefsSeo_Vendor\Google_Service_AnalyticsData_InListFilter;
 use ahrefs\AhrefsSeo_Vendor\Google_Service_AnalyticsData_Metric;
 use ahrefs\AhrefsSeo_Vendor\Google_Service_AnalyticsData_StringFilter;
-use ahrefs\AhrefsSeo_Vendor\Google_Service_AnalyticsReporting;
-use ahrefs\AhrefsSeo_Vendor\Google_Service_AnalyticsReporting_DateRange;
-use ahrefs\AhrefsSeo_Vendor\Google_Service_AnalyticsReporting_Dimension;
-use ahrefs\AhrefsSeo_Vendor\Google_Service_AnalyticsReporting_DimensionFilter;
-use ahrefs\AhrefsSeo_Vendor\Google_Service_AnalyticsReporting_DimensionFilterClause;
-use ahrefs\AhrefsSeo_Vendor\Google_Service_AnalyticsReporting_GetReportsRequest;
-use ahrefs\AhrefsSeo_Vendor\Google_Service_AnalyticsReporting_Metric;
-use ahrefs\AhrefsSeo_Vendor\Google_Service_AnalyticsReporting_ReportRequest;
 use ahrefs\AhrefsSeo_Vendor\Google_Service_Exception;
 use ahrefs\AhrefsSeo_Vendor\GuzzleHttp\Exception\ConnectException as GuzzleConnectException;
 use ahrefs\AhrefsSeo_Vendor\GuzzleHttp\Exception\RequestException as GuzzleRequestException;
@@ -113,13 +104,19 @@ trait Analytics_Ga {
 	public function load_accounts_list() {
 		$result = [];
 		try {
-			// mix ga4 with ga.
-			$ga4  = $this->load_accounts_list_ga4();
-			$ga   = $this->load_accounts_list_ga();
-			$data = array_merge( $ga, $ga4 );
+			$ga4 = defined( 'AHREFS_SEO_NO_GA' ) && AHREFS_SEO_NO_GA ? [
+				[
+					'ua_id'        => 'AHREFS_SEO_NO_GA',
+					'account'      => 'AHREFS_SEO_NO_GA',
+					'account_name' => 'AHREFS_SEO_NO_GA',
+					'name'         => 'AHREFS_SEO_NO_GA',
+					'stream'       => Ahrefs_Seo::get_current_domain(),
+					'website'      => 'https://' . Ahrefs_Seo::get_current_domain(),
+				],
+			] : $this->load_accounts_list_ga4();
 			// sort results.
 			usort(
-				$data,
+				$ga4,
 				function ( $a, $b ) {
 				// order by account name.
 					$diff = strcasecmp( $a['account_name'], $b['account_name'] );
@@ -131,7 +128,7 @@ trait Analytics_Ga {
 				}
 			);
 			// split by account, profile.
-			foreach ( $data as $item ) {
+			foreach ( $ga4 as $item ) {
 				$account      = $item['account'];
 				$account_name = $item['account_name'];
 				$ua_id        = $item['ua_id'];
@@ -324,118 +321,6 @@ trait Analytics_Ga {
         // phpcs:enable WordPress.NamingConventions.ValidVariableName.NotSnakeCaseMemberVar,WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 	}
 	/**
-	 * Return array with ua accounts list from Google Analytics Management API
-	 *
-	 * @return array<array>
-	 * @since 0.7.3
-	 */
-	protected function load_accounts_list_ga() {
-        // phpcs:disable WordPress.NamingConventions.ValidVariableName.NotSnakeCaseMemberVar,WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
-		if ( is_array( $this->accounts_ga ) ) { // cached results from last call.
-			return $this->accounts_ga;
-		}
-		if ( defined( 'AHREFS_SEO_NO_GA' ) && AHREFS_SEO_NO_GA ) {
-			return [
-				[
-					'ua_id'        => 'AHREFS_SEO_NO_GA',
-					'account'      => 'AHREFS_SEO_NO_GA',
-					'account_name' => 'AHREFS_SEO_NO_GA',
-					'name'         => 'AHREFS_SEO_NO_GA',
-					'view'         => __( 'default', 'ahrefs-seo' ),
-					'website'      => 'https://' . Ahrefs_Seo::get_current_domain(),
-				],
-			];
-		}
-		$result = [];
-		// do this call earlier, maybe it is no sence to make another calls if no accounts.
-		try {
-			$client    = $this->create_client();
-			$analytics = new Google_Service_Analytics( $client );
-			$ua_list   = $analytics->management_webproperties->listManagementWebproperties( '~all' );
-			do_action_ref_array( 'ahrefs_seo_api_list_ga_webproperties', [ &$ua_list ] );
-		} catch ( Error $e ) {
-			Ahrefs_Seo_Compatibility::on_type_error( $e, __METHOD__, __FILE__ );
-			return [];
-		} catch ( Exception $e ) {
-			$this->handle_exception( $e, false, true, false ); // do not save message.
-			$this->set_message( $this->extract_message( $e, __( 'Google Analytics Management API: failed to get the list of accounts.', 'ahrefs-seo' ) ) );
-			return [];
-		}
-		if ( empty( $ua_list ) ) {
-			return [];
-		}
-		$data = $ua_list->getItems();
-		try {
-			$accounts_list = $analytics->management_accounts->listManagementAccounts();
-			do_action_ref_array( 'ahrefs_seo_api_list_ga_accounts', [ &$accounts_list ] );
-		} catch ( Exception $e ) {
-			$this->handle_exception( $e );
-			$accounts_list = null;
-		}
-		$accounts = [];
-		if ( ! empty( $accounts_list ) ) {
-			foreach ( $accounts_list->getItems() as $account ) {
-				$accounts[ $account->getId() ] = $account->getName();
-			}
-			$this->accounts_ga_raw = array_values( $accounts );
-		}
-		/*
-		Workaround to extract defaultProfileId, which some of the older GA accounts lack
-		*/
-		try {
-			$profiles_list = $analytics->management_profiles->listManagementProfiles( '~all', '~all' );
-			do_action_ref_array( 'ahrefs_seo_api_list_ga_profiles', [ &$profiles_list ] );
-		} catch ( Exception $e ) {
-			$this->handle_exception( $e );
-			$profiles_list = null;
-		}
-		$profiles_groups = [];
-		if ( ! empty( $profiles_list ) ) {
-			foreach ( $profiles_list->getItems() as $profile ) {
-				$_web_property_id = $profile->getWebPropertyId();
-				if ( ! isset( $profiles_groups[ $_web_property_id ] ) ) {
-					$profiles_groups[ $_web_property_id ] = [];
-				}
-				$profiles_groups[ $_web_property_id ][] = [
-					'id'      => $profile->getId(),
-					'name'    => $profile->getName(),
-					'website' => $profile->getWebsiteUrl(),
-				];
-			}
-		}
-		if ( ! empty( $data ) ) {
-			/** @var \ahrefs\AhrefsSeo_Vendor\Google_Service_Analytics_Webproperty $item */
-			foreach ( $data as $item ) {
-				if ( isset( $profiles_groups[ $item->id ] ) ) {
-					foreach ( $profiles_groups[ $item->id ] as $_profile ) {
-						$result[] = [
-							'ua_id'        => $_profile['id'],
-							'account'      => $item->accountId,
-							'account_name' => isset( $accounts[ $item->accountId ] ) ? $accounts[ $item->accountId ] : '---',
-							'name'         => $item->name,
-							'view'         => $_profile['name'],
-							'website'      => $_profile['website'],
-						];
-					}
-				} else {
-					// fill default choice.
-					$result[] = [
-						'ua_id'        => $item->defaultProfileId,
-						'account'      => $item->accountId,
-						'account_name' => isset( $accounts[ $item->accountId ] ) ? $accounts[ $item->accountId ] : '---',
-						'name'         => $item->name,
-						/* Translators: part of "default view" */
-						'view'         => __( 'default', 'ahrefs-seo' ),
-						'website'      => $item->websiteUrl,
-					];
-				}
-			}
-		}
-		$this->accounts_ga = $result;
-		return $result;
-        // phpcs:enable WordPress.NamingConventions.ValidVariableName.NotSnakeCaseMemberVar,WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
-	}
-	/**
 	 * Get visitors traffic by type for page
 	 *
 	 * @param array<int|string, string>|null $page_slugs Page url starting with '/'.
@@ -498,7 +383,8 @@ trait Analytics_Ga {
 				return $result;
 			}
 		}
-		$result = 0 === strpos( is_null( $ua_id ) ? $this->get_data_tokens()->get_ua_id() : $ua_id, 'properties/' ) ? $this->get_visitors_by_page_ga4( $page_slugs, $start_date, $end_date, $ua_id ) : $this->get_visitors_by_page_ga( $page_slugs, $start_date, $end_date, $max_results, $ua_id );
+		$result = 0 === strpos( is_null( $ua_id ) ? $this->get_data_tokens()->get_ua_id() : $ua_id, 'properties/' ) ? $this->get_visitors_by_page_ga4( $page_slugs, $start_date, $end_date, $ua_id ) : null;
+		// deprecated Universal Analytics property.
 		// add total => 0 to each missing slug.
 		if ( ! is_null( $result ) && is_array( $page_slugs ) ) {
 			foreach ( $page_slugs as $_slug ) {
@@ -783,146 +669,6 @@ trait Analytics_Ga {
 		);
 	}
 	/**
-	 * Get visitors traffic by type for page for GA property, use Google Analytics Reporting API version 4.
-	 *
-	 * @param array<int|string, string>|null $page_slugs_list Page url starting with '/'.
-	 * @param string                         $start_date Start date.
-	 * @param string                         $end_date End date.
-	 * @param null|int                       $max_results Max results count.
-	 * @param null|string                    $ua_id UA id or null if default UA id used.
-	 *
-	 * @return array<int|string, array<string, mixed>> Array, 'slug' => [ traffic type => visitors number].
-	 * @since 0.7.3
-	 *
-     * phpcs:ignore Squiz.Commenting.FunctionCommentThrowTag.Missing -- we handle exception.
-	 */
-	public function get_visitors_by_page_ga( array $page_slugs_list = null, $start_date, $end_date, $max_results = null, $ua_id = null ) {
-		$result = [];
-		try {
-			$client             = $this->create_client();
-			$analyticsreporting = new Google_Service_AnalyticsReporting( $client );
-			if ( is_null( $ua_id ) ) {
-				$ua_id = $this->get_data_tokens()->get_ua_id();
-			}
-			$page_slugs = is_null( $page_slugs_list ) ? [ null ] : $page_slugs_list; // receive pages info without slug filter.
-			$per_page      = is_null( $max_results ) ? self::QUERY_TRAFFIC_PER_PAGE : $max_results;
-			$pages_to_load = array_map(
-				function ( $slug ) {
-					return [
-						'slug'       => $slug,
-						'next_token' => null,
-					]; // later we will add next_token or remove item from the list.
-				},
-				$page_slugs
-			);
-			do {
-				try {
-					$requests = []; // up to 5 requests allowed.
-					$data     = null;
-					// analytics parameters.
-					$params = [ 'quotaUser' => $this->get_api_user() ];
-					// get results from Google Analytics.
-					try {
-						$this->maybe_do_a_pause( 'ga' );
-						foreach ( $pages_to_load as $page_to_load ) {
-							$page_slug  = $page_to_load['slug'];
-							$next_token = isset( $page_to_load['next_token'] ) ? $page_to_load['next_token'] : null;
-							// Create the DateRange object.
-							$request = $this->create_report_request_object( $start_date, $end_date, $ua_id, $per_page );
-							if ( ! is_null( $page_slug ) ) {
-								// Create the DimensionFilter.
-								$dimension_filter = new Google_Service_AnalyticsReporting_DimensionFilter();
-								$dimension_filter->setDimensionName( 'ga:pagePath' );
-								$dimension_filter->setOperator( 'EXACT' );
-								$dimension_filter->setExpressions( array( $page_slug ) );
-								// Create the DimensionFilterClauses.
-								$dimension_filter_clause = new Google_Service_AnalyticsReporting_DimensionFilterClause();
-								$dimension_filter_clause->setFilters( array( $dimension_filter ) );
-								$request->setDimensionFilterClauses( array( $dimension_filter_clause ) );
-							}
-							if ( ! empty( $next_token ) ) {
-								$request->setPageToken( $next_token );
-							}
-							$requests[] = $request;
-						}
-						$body = new Google_Service_AnalyticsReporting_GetReportsRequest();
-						$body->setReportRequests( $requests );
-						$data = $analyticsreporting->reports->batchGet( $body, $params );
-						do_action_ref_array( 'ahrefs_seo_api_visitors_by_page_ga', [ &$data ] );
-						$this->maybe_do_a_pause( 'ga', true );
-					} catch ( Google_Service_Exception $e ) { // catch recoverable errors.
-						$this->maybe_do_a_pause( 'ga', true );
-						$this->service_error = $e->getErrors();
-						$this->handle_exception( $e );
-						$this->on_error_received( $e, $page_slugs_list );
-						throw $e;
-					} catch ( GuzzleRequestException $e ) { // catch recoverable errors.
-						$this->maybe_do_a_pause( 'ga', true );
-						$this->handle_exception( $e );
-						$this->on_error_received( $e, $page_slugs_list );
-						throw $e;
-					}
-					if ( ! is_null( $data ) ) {
-						$reports = $data->getReports();
-						if ( ! empty( $reports ) ) {
-							foreach ( $reports as $index => $report ) {
-								$data_items                            = $report->getData();
-								$pages_to_load[ $index ]['next_token'] = $report->getNextPageToken();
-								// load details from rows.
-								$rows = $data_items->getRows();
-								if ( ! empty( $rows ) ) {
-									foreach ( $rows as $row ) {
-										list($_slug, $_type) = $row->getDimensions();
-										// page slug + traffic type.
-										$_metrics       = $row->getMetrics();
-										$_traffic_count = isset( $_metrics[0]->getValues()[0] ) ? $_metrics[0]->getValues()[0] : 0;
-										if ( ! isset( $result[ $_slug ] ) ) {
-											$result[ $_slug ] = [];
-										}
-										if ( ! isset( $result[ $_slug ][ "{$_type}" ] ) ) {
-											$result[ $_slug ][ "{$_type}" ]                               = (int) $_traffic_count;
-											$result[ $_slug ][ Ahrefs_Seo_Analytics::TRAFFIC_TYPE_TOTAL ] = (int) $_traffic_count + ( isset( $result[ $_slug ][ Ahrefs_Seo_Analytics::TRAFFIC_TYPE_TOTAL ] ) ? $result[ $_slug ][ Ahrefs_Seo_Analytics::TRAFFIC_TYPE_TOTAL ] : 0 );
-										} else {
-											$result[ $_slug ][ "{$_type}" ]                               += (int) $_traffic_count;
-											$result[ $_slug ][ Ahrefs_Seo_Analytics::TRAFFIC_TYPE_TOTAL ] += (int) $_traffic_count;
-										}
-									}
-								}
-								if ( ! is_null( $max_results ) && ( count( $rows ) >= $max_results || count( $result ) >= $max_results ) ) {
-									$pages_to_load[ $index ]['next_token'] = null; // do not load more.
-								}
-							}
-						} else {
-							$pages_to_load = [];
-						}
-					} else {
-						$pages_to_load = [];
-					}
-					// remove finished pages (without next_token) from load list.
-					$pages_to_load = array_values(
-						array_filter(
-							$pages_to_load,
-							function ( $value ) {
-								return ! empty( $value['next_token'] );
-							}
-						)
-					);
-				} catch ( Error $e ) {
-					$message = Ahrefs_Seo_Compatibility::on_type_error( $e, __METHOD__, __FILE__ );
-					$this->set_message( $message );
-				} catch ( Exception $e ) {
-					$this->handle_exception( $e, true );
-					return $this->prepare_answer( $page_slugs_list, __( 'Connection error', 'ahrefs-seo' ) );
-				}
-				// load until any next page exists, but load only first page with results for the generic request without page ($page_slugs_list is null).
-			} while ( ! empty( $pages_to_load ) && ! is_null( $page_slugs_list ) && ! is_null( $data ) );
-		} catch ( Error $e ) {
-			$message = Ahrefs_Seo_Compatibility::on_type_error( $e, __METHOD__, __FILE__ );
-			$this->set_message( $message );
-		}
-		return $result;
-	}
-	/**
 	 * Get top pages for current GA profile.
 	 *
 	 * @return string[]|null
@@ -938,128 +684,12 @@ trait Analytics_Ga {
 		if ( '' === $ua_id ) {
 			return null;
 		}
+		$result = [];
 		if ( 0 === strpos( $ua_id, 'properties/' ) ) {
 			$result = $this->get_found_pages_by_ua_id_ga4( [ $ua_id ], $start_date, $end_date, false );
-		} else {
-			$result = $this->get_found_pages_by_ua_id_ga( [ $ua_id ], $start_date, $end_date, false );
 		}
 		$item = array_shift( $result );
 		return is_array( $item ) ? $item : null;
-	}
-	/**
-	 * Get visitors traffic by type for page for GA property.
-	 *
-	 * @param string[] $ua_ids UA ids list to check.
-	 * @param string   $start_date Start date.
-	 * @param string   $end_date End date.
-	 * @param bool     $return_count Return count of found pages or pages slugs list.
-	 *
-	 * @return array<string, null|int>|array<string, null|string[]> Array, [ ua_id => pages_found ].
-	 * @phpstan-return ($return_count is true ? array<string, null|int> : array<string, null|string[]>)
-	 * @since 0.7.3
-	 */
-	private function get_found_pages_by_ua_id_ga( array $ua_ids, $start_date, $end_date, $return_count = true ) {
-        // phpcs:disable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
-		$results = [];
-		try {
-			$client = $this->create_client();
-			$client->setUseBatch( true );
-			$analyticsreporting = new Google_Service_AnalyticsReporting( $client );
-			$per_page           = $return_count ? self::QUERY_DETECT_GA_LIMIT : 1000; // used as per page parameter, but really we load first page only.
-			do { // for ua_ids parts.
-				$ua_id_list = array_splice( $ua_ids, 0, 5 ); // max 5 requests per batch.
-				try {
-					$data = null;
-					// analytics parameters.
-					$params = [ 'quotaUser' => $this->get_api_user() ];
-					// get results from Google Analytics.
-					try {
-						$this->maybe_do_a_pause( 'ga' );
-						$batch = new Google_Http_Batch( $client, false, $analyticsreporting->rootUrl, $analyticsreporting->batchPath );
-						$this->maybe_do_a_pause( 'ga', true );
-						foreach ( $ua_id_list as $ua_id ) {
-							// Create the DateRange object.
-							$request = $this->create_report_request_object( $start_date, $end_date, $ua_id, $per_page );
-							$body    = new Google_Service_AnalyticsReporting_GetReportsRequest();
-							$body->setReportRequests( [ $request ] );
-							$prepared_queries = $analyticsreporting->reports->batchGet( $body, $params );
-							$batch->add( $prepared_queries, $ua_id );
-						}
-						$data = $batch->execute();
-					} catch ( Google_Service_Exception $e ) { // try to continue, but report error.
-						Ahrefs_Seo_Errors::save_message( 'google', $e->getMessage(), Message::TYPE_NOTICE );
-						Ahrefs_Seo::notify( $e, 'autodetect ga' );
-					} catch ( GuzzleConnectException $e ) { // try to continue, but report error.
-						Ahrefs_Seo_Errors::save_message( 'google', $e->getMessage(), Message::TYPE_NOTICE );
-						Ahrefs_Seo::notify( $e, 'autodetect ga' );
-					}
-					if ( ! is_null( $data ) ) {
-						foreach ( $data as $index => $values ) {
-							$result      = [];
-							$result_list = [];
-							$index       = str_replace( 'response-', '', $index );
-							if ( $values instanceof Exception ) {
-								$results[ "{$index}" ] = null;
-								continue;
-							}
-							$reports = $values->getReports();
-							if ( ! empty( $reports ) ) {
-								foreach ( $reports as $report ) {
-									$data_items = $report->getData();
-									// load details from rows.
-									$rows = $data_items->getRows();
-									if ( ! empty( $rows ) ) {
-										foreach ( $rows as $row ) {
-											// if we here - the traffic at page is not empty.
-											list($_slug, $_type) = $row->getDimensions();
-											// page slug + traffic type.
-											if ( ! isset( $result[ $_slug ] ) ) {
-												$result[ $_slug ] = true;
-												$result_list[]    = $_slug;
-											}
-										}
-									}
-									if ( $return_count ) {
-										$count = 0;
-										if ( ! empty( $result ) ) {
-											$result = array_keys( $result );
-											array_walk(
-												$result,
-												function ( $slug ) use ( &$count ) {
-													$post = get_page_by_path( "{$slug}", OBJECT, [ 'post', 'page' ] );
-													if ( $post instanceof \WP_Post ) {
-														$count++;
-													}
-												}
-											);
-										}
-										$results[ "{$index}" ] = $count;
-									} else {
-										$results[ "{$index}" ] = $result_list;
-									}
-								}
-							}
-						}
-					}
-				} catch ( Error $e ) {
-					$message = Ahrefs_Seo_Compatibility::on_type_error( $e, __METHOD__, __FILE__ );
-					$this->set_message( $message );
-				} catch ( Exception $e ) {
-					$this->handle_exception( $e, true );
-					return $results;
-				}
-				// load until any next page exists, but load only first page with results for the generic request without page ($page_slugs_list is null).
-			} while ( ! empty( $ua_ids ) );
-		} catch ( Error $e ) {
-			$message = Ahrefs_Seo_Compatibility::on_type_error( $e, __METHOD__, __FILE__ );
-			$this->set_message( $message );
-		} finally {
-			if ( ! empty( $client ) ) {
-				$client->setUseBatch( false );
-			}
-		}
-		return $results;
-        // phpcs:enable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 	}
 	/**
 	 * Check that currently selected GA account has same domain in website property as current site has.
@@ -1240,17 +870,11 @@ trait Analytics_Ga {
 		$results    = [];
 		$start_date = date( 'Y-m-d', time() - 3 * MONTH_IN_SECONDS );
 		$end_date   = date( 'Y-m-d' );
-		$ua_ids_ga  = [];
 		$ua_ids_ga4 = [];
 		foreach ( $ua_ids as $ua_id ) {
 			if ( 0 === strpos( $ua_id, 'properties/' ) ) {
 				$ua_ids_ga4[] = $ua_id;
-			} else {
-				$ua_ids_ga[] = $ua_id;
 			}
-		}
-		if ( count( $ua_ids_ga ) ) {
-			$results = $this->get_found_pages_by_ua_id_ga( $ua_ids_ga, $start_date, $end_date );
 		}
 		if ( count( $ua_ids_ga4 ) ) {
 			$results = $results + $this->get_found_pages_by_ua_id_ga4( $ua_ids_ga4, $start_date, $end_date ); // save indexes.
@@ -1291,37 +915,5 @@ trait Analytics_Ga {
 	 */
 	public function get_max_request_items() {
 		return $this->is_ga4_property( $this->get_data_tokens()->get_ua_id() ) ? self::REQUEST_SIZE_GA4 : self::REQUEST_SIZE_GA;
-	}
-	/**
-	 * Creates ReportRequest instance.
-	 *
-	 * @param string $start_date Start date.
-	 * @param string $end_date End date.
-	 * @param string $ua_id UA id.
-	 * @param int    $per_page Items count per page.
-	 *
-	 * @return Google_Service_AnalyticsReporting_ReportRequest
-	 */
-	private function create_report_request_object( $start_date, $end_date, $ua_id, $per_page ) {
-		$date_range = new Google_Service_AnalyticsReporting_DateRange();
-		$date_range->setStartDate( $start_date );
-		$date_range->setEndDate( $end_date );
-		// Create the Metrics object.
-		$metric1 = new Google_Service_AnalyticsReporting_Metric();
-		$metric1->setExpression( 'ga:uniquePageviews' );
-		// Create the Dimensions object.
-		$dimension1 = new Google_Service_AnalyticsReporting_Dimension();
-		$dimension1->setName( 'ga:pagePath' );
-		/** @link https://ga-dev-tools.appspot.com/dimensions-metrics-explorer/#ga:channelGrouping */
-		$dimension2 = new Google_Service_AnalyticsReporting_Dimension();
-		$dimension2->setName( 'ga:channelGrouping' );
-		// Create the ReportRequest object.
-		$request = new Google_Service_AnalyticsReporting_ReportRequest();
-		$request->setViewId( $ua_id );
-		$request->setDateRanges( $date_range );
-		$request->setDimensions( array( $dimension1, $dimension2 ) );
-		$request->setMetrics( array( $metric1 ) );
-		$request->setPageSize( $per_page );
-		return $request;
 	}
 }

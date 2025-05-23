@@ -28,8 +28,8 @@ $url          = ( new Export_Audit_Data() )->get_export_url();
 			if ( current_user_can( Ahrefs_Seo::CAP_EXPORT_ZIP ) ) {
 				?>
 				<a href="<?php echo esc_attr( $is_available ? $url : '#' ); ?>" class="button button-large with-icon download-button block-content
-									<?php
-									echo $is_available ? '' : ' disabled'; ?>">
+				<?php
+				echo $is_available ? '' : ' disabled'; ?>">
 				<?php
 				esc_html_e( 'Download', 'ahrefs-seo' );
 				?>

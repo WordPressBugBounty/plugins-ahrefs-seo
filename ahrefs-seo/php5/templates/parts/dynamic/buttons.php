@@ -20,18 +20,18 @@ if ( $show_buttons ) {
 		if ( $button_plugins ) {
 			?>
 		<a id="open_plugins_button" class="button button-primary" href="<?php echo esc_attr( admin_url( 'plugins.php' ) ); ?>">
-																					<?php
-																					esc_html_e( 'Go to plugins page', 'ahrefs-seo' );
-																					?>
+			<?php
+			esc_html_e( 'Go to plugins page', 'ahrefs-seo' );
+			?>
 		</a>
 			<?php
 		}
 		if ( $button_themes ) {
 			?>
 		<a id="open_plugins_button" class="button button-primary" href="<?php echo esc_attr( admin_url( 'themes.php' ) ); ?>">
-																					<?php
-																					esc_html_e( 'Go to themes page', 'ahrefs-seo' );
-																					?>
+			<?php
+			esc_html_e( 'Go to themes page', 'ahrefs-seo' );
+			?>
 		</a>
 			<?php
 		}
@@ -39,9 +39,9 @@ if ( $show_buttons ) {
 			$link = Links::settings( $button_ahrefs ? Ahrefs_Seo_Screen_Settings::TAB_ACCOUNT : Ahrefs_Seo_Screen_Settings::TAB_ANALYTICS, Links::content_audit() );
 			?>
 		<a id="open_account_setting_button" class="uirole-target-settings-account button button-primary" href="<?php echo esc_attr( $link ); ?>">
-																															<?php
-																															esc_html_e( 'Set up connections', 'ahrefs-seo' );
-																															?>
+			<?php
+			esc_html_e( 'Set up connections', 'ahrefs-seo' );
+			?>
 		</a>
 			<?php
 		}

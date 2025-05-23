@@ -104,7 +104,7 @@ class Client implements \Bugsnag\FeatureDataStore
      * @param \GuzzleHttp\ClientInterface|null $guzzle
      * @param \Bugsnag\Shutdown\ShutdownStrategyInterface|null $shutdownStrategy
      */
-    public function __construct(\Bugsnag\Configuration $config, \Bugsnag\Request\ResolverInterface $resolver = null, \ahrefs\AhrefsSeo_Vendor\GuzzleHttp\ClientInterface $guzzle = null, \Bugsnag\Shutdown\ShutdownStrategyInterface $shutdownStrategy = null)
+    public function __construct(\Bugsnag\Configuration $config, $resolver = null, $guzzle = null, $shutdownStrategy = null)
     {
         $guzzle = $guzzle ?: self::makeGuzzle();
         $this->syncNotifyEndpointWithGuzzleBaseUri($config, $guzzle);
@@ -267,7 +267,7 @@ class Client implements \Bugsnag\FeatureDataStore
      *
      * @return void
      */
-    public function notifyException($throwable, callable $callback = null)
+    public function notifyException($throwable, $callback = null)
     {
         $report = \Bugsnag\Report::fromPHPThrowable($this->config, $throwable);
         $this->notify($report, $callback);
@@ -281,7 +281,7 @@ class Client implements \Bugsnag\FeatureDataStore
      *
      * @return void
      */
-    public function notifyError($name, $message, callable $callback = null)
+    public function notifyError($name, $message, $callback = null)
     {
         $report = \Bugsnag\Report::fromNamedError($this->config, $name, $message);
         $this->notify($report, $callback);
@@ -296,7 +296,7 @@ class Client implements \Bugsnag\FeatureDataStore
      *
      * @return void
      */
-    public function notify(\Bugsnag\Report $report, callable $callback = null)
+    public function notify(\Bugsnag\Report $report, $callback = null)
     {
         $this->pipeline->execute($report, function ($report) use($callback) {
             if ($callback) {
@@ -427,7 +427,7 @@ class Client implements \Bugsnag\FeatureDataStore
      *
      * @return $this
      */
-    public function setNotifyReleaseStages(array $notifyReleaseStages = null)
+    public function setNotifyReleaseStages($notifyReleaseStages = null)
     {
         $this->config->setNotifyReleaseStages($notifyReleaseStages);
         return $this;

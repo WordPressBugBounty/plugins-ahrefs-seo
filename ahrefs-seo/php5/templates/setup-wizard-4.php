@@ -45,7 +45,7 @@ $finish   = $progress['finish'];
 				if ( $percents > 0 ) {
 					?>
 					style="<?php echo esc_attr( 'width:' . $percents . '%' ); ?>"
-										<?php
+					<?php
 				}
 				?>
 					data-position="<?php echo esc_attr( $percents > 0 ? $percents : '0' ); ?>"

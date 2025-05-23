@@ -44,9 +44,9 @@ if ( ! $allow_run_audit ) {
 				disabled
 				<?php
 			} ?>" id="first_audit"><span></span>
-	<?php
-	esc_html_e( 'Run content audit', 'ahrefs-seo' );
-	?>
+<?php
+esc_html_e( 'Run content audit', 'ahrefs-seo' );
+?>
 </a>
 		</div>
 

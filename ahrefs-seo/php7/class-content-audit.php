@@ -1023,43 +1023,6 @@ class Content_Audit {
 	}
 
 	/**
-	 * Reset post errors at content table before update request
-	 *
-	 * @param Post_Tax $post_tax Post or term.
-	 * @param bool     $reset_traffic_error Reset traffic error.
-	 * @param bool     $reset_backlinks_error Reset backlinks error.
-	 * @param bool     $reset_position_error Reset position error.
-	 * @return void
-	 * @deprecated
-	 */
-	private function content_reset_post_errors( Post_Tax $post_tax, bool $reset_traffic_error = true, bool $reset_backlinks_error = true, bool $reset_position_error = true ) : void {
-		global $wpdb;
-		$updates = [];
-		$format  = [];
-		if ( $reset_traffic_error ) {
-			$updates['error_traffic'] = null;
-			$format[]                 = [ '%s' ];
-		}
-		if ( $reset_backlinks_error ) {
-			$updates['error_backlinks'] = null;
-			$format[]                   = [ '%s' ];
-		}
-		if ( $reset_position_error ) {
-			$updates['error_position'] = null;
-			$format[]                  = [ '%s' ];
-		}
-		if ( count( $updates ) ) {
-			$wpdb->update(
-				$wpdb->ahrefs_content,
-				$updates,
-				$post_tax->as_where_array(),
-				$format,
-				$post_tax->as_where_format()
-			);
-		}
-	}
-
-	/**
 	 * Approve keyword and reset position info.
 	 *
 	 * @param Post_Tax $post_tax Post or term.

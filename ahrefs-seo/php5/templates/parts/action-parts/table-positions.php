@@ -72,9 +72,9 @@ $table_id    = $show_footer ? 'positions_list' : 'positions_current';
 					?>
 	</td>
 					<td><a href="#" class="positions-check-serp" data-keyword="<?php echo esc_attr( $values['query'] ); ?>" target="_blank">
-																							<?php
-																							esc_html_e( 'Check SERP', 'ahrefs-seo' );
-																							?>
+					<?php
+					esc_html_e( 'Check SERP', 'ahrefs-seo' );
+					?>
 	</a></td>
 				</tr>
 				<?php

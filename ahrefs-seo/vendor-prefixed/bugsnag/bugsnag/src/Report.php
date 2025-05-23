@@ -640,7 +640,7 @@ class Report implements \Bugsnag\FeatureDataStore
      */
     public function toArray()
     {
-        $event = ['app' => $this->config->getAppData(), 'device' => \array_merge(['time' => $this->time], $this->config->getDeviceData()), 'user' => $this->getUser(), 'context' => $this->getContext(), 'payloadVersion' => \Bugsnag\HttpClient::NOTIFY_PAYLOAD_VERSION, 'severity' => $this->getSeverity(), 'exceptions' => $this->exceptionArray(), 'breadcrumbs' => $this->breadcrumbs, 'metaData' => $this->cleanupObj($this->getMetaData(), \true), 'unhandled' => $this->getUnhandled(), 'severityReason' => $this->getSeverityReason(), 'featureFlags' => \array_map(function (\Bugsnag\FeatureFlag $flag) {
+        $event = ['app' => $this->config->getAppData(), 'device' => \array_merge(['time' => $this->time], $this->config->getDeviceData()), 'user' => $this->cleanupObj($this->getUser(), \true), 'context' => $this->getContext(), 'payloadVersion' => \Bugsnag\HttpClient::NOTIFY_PAYLOAD_VERSION, 'severity' => $this->getSeverity(), 'exceptions' => $this->exceptionArray(), 'breadcrumbs' => $this->breadcrumbs, 'metaData' => $this->cleanupObj($this->getMetaData(), \true), 'unhandled' => $this->getUnhandled(), 'severityReason' => $this->getSeverityReason(), 'featureFlags' => \array_map(function (\Bugsnag\FeatureFlag $flag) {
             return $flag->toArray();
         }, $this->featureFlags->toArray())];
         if ($hash = $this->getGroupingHash()) {

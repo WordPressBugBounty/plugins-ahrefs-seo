@@ -65,7 +65,7 @@ class Configuration implements \Bugsnag\FeatureDataStore
      *
      * @var string[]
      */
-    protected $notifier = ['name' => 'Bugsnag PHP (Official)', 'version' => '3.29.1', 'url' => 'https://bugsnag.com'];
+    protected $notifier = ['name' => 'Bugsnag PHP (Official)', 'version' => '3.29.3', 'url' => 'https://bugsnag.com'];
     /**
      * The fallback app type.
      *
@@ -209,7 +209,7 @@ class Configuration implements \Bugsnag\FeatureDataStore
      *
      * @return $this
      */
-    public function setNotifyReleaseStages(array $notifyReleaseStages = null)
+    public function setNotifyReleaseStages($notifyReleaseStages = null)
     {
         $this->notifyReleaseStages = $notifyReleaseStages;
         return $this;

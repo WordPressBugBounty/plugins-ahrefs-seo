@@ -85,9 +85,9 @@ echo esc_attr( implode( ' ', $classes ) ); ?>">
 				?>
 				<div class="account-actions">
 					<a href="<?php echo esc_attr( $locals['disconnect_url'] ); ?>" class="disconnect-button" id="ahrefs_disconnect"><span class="text">
-										<?php
-										esc_html_e( 'Disconnect', 'ahrefs-seo' );
-										?>
+					<?php
+					esc_html_e( 'Disconnect', 'ahrefs-seo' );
+					?>
 	</span></a>
 					<?php
 					if ( ! $analytics->get_data_tokens()->is_using_direct_connection() ) {

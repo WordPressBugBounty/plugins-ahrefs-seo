@@ -59,9 +59,9 @@ esc_html_e( 'Please select', 'ahrefs-seo' );
 			// do not allow user to select GSC item with low permissions level (siteUnverifiedUser).
 			?>
 			<option value="<?php echo esc_attr( $gsc_site_current ); ?>" 
-										<?php
-										selected( $gsc_site_current, $gsc_site );
-										?>
+			<?php
+			selected( $gsc_site_current, $gsc_site );
+			?>
 			<?php
 			disabled( 'siteUnverifiedUser', isset( $item['level'] ) ? $item['level'] : '' );
 			?>
