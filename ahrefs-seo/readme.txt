@@ -5,7 +5,7 @@ Tags: content audit, seo, ahrefs, content analysis, google search console, googl
 
 Requires at least: 5.0
 Tested up to: 6.8
-Stable tag: 0.10.5
+Stable tag: 0.11.0
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -13,6 +13,15 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Automate content audits and grow organic traffic to your WordPress website with Ahrefs SEO plugin.
 
 == Description ==
+
+**Ahrefs SEO WordPress Plugin is being deprecated**
+
+We’re retiring the Ahrefs SEO WordPress plugin on **October 31, 2025**.
+Before that date, please export any content audits you want to keep, as the plugin will no longer be available afterward.
+You can continue checking your traffic, ranking keywords, backlinks, and running Site Audits — all inside Ahrefs Webmaster Tools, completely free for domains you own.
+<a href="https://ahrefs.com/webmaster-tools" target="_blank">Learn more at ahrefs.com/webmaster-tools</a>
+We’re also bringing the same functionality as this plugin directly into the Ahrefs Toolkit, so stay tuned for announcements.
+Have questions? Our support team is here to help: <a href="mailto:support@ahrefs.com" target="_blank">support@ahrefs.com</a>
 
 **Automate content audits and grow organic traffic to your WordPress website with Ahrefs SEO plugin.**
 
@@ -128,6 +137,11 @@ It works perfectly well with other plugins like Yoast, Rank Math, SEOPress.
 4. Set or change target keywords for your pages based on target phrases from other plugins, top queries from Search Console or our analysis
 
 == Changelog ==
+= 0.11.0 =
+Release date: September 29th, 2025
+
+The Ahrefs SEO WordPress plugin will be retired on October 31, 2025. This update adds in-plugin notices with details and instructions, including how to export your content audits before the deprecation date.
+
 = 0.10.5 =
 Release date: May 23nd, 2025
 

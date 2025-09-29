@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Ahrefs SEO plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ahrefs SEO 0.10.5\n"
+"Project-Id-Version: Ahrefs SEO 0.11.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ahrefs-seo\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-05-23T12:52:34+00:00\n"
+"POT-Creation-Date: 2025-09-29T13:44:24+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: ahrefs-seo\n"
@@ -20,17 +20,17 @@ msgstr ""
 #: php5/class-ahrefs-seo-compatibility.php:286
 #: php5/class-ahrefs-seo-compatibility.php:295
 #: php5/class-ahrefs-seo-compatibility.php:308
-#: php5/class-ahrefs-seo.php:283
-#: php5/class-ahrefs-seo.php:288
-#: php5/class-ahrefs-seo.php:294
+#: php5/class-ahrefs-seo.php:284
+#: php5/class-ahrefs-seo.php:289
+#: php5/class-ahrefs-seo.php:295
 #: php5/class-cron-any.php:63
 #: php5/class-cron-any.php:69
 #: php7/class-ahrefs-seo-compatibility.php:313
 #: php7/class-ahrefs-seo-compatibility.php:318
 #: php7/class-ahrefs-seo-compatibility.php:336
-#: php7/class-ahrefs-seo.php:312
-#: php7/class-ahrefs-seo.php:318
-#: php7/class-ahrefs-seo.php:325
+#: php7/class-ahrefs-seo.php:313
+#: php7/class-ahrefs-seo.php:319
+#: php7/class-ahrefs-seo.php:326
 #: php7/class-cron-any.php:70
 #: php7/class-cron-any.php:76
 msgid "Ahrefs SEO"
@@ -57,12 +57,14 @@ msgid "https://ahrefs.com/"
 msgstr ""
 
 #. translators: %s: php version string
-#: ahrefs-plugin.php:63
+#: ahrefs-plugin.php:61
 #, php-format
 msgid "Ahrefs SEO requires PHP version %s or above. Please update PHP to run this plugin."
 msgstr ""
 
-#: ahrefs-plugin.php:65
+#: ahrefs-plugin.php:63
+#: php5/class-ahrefs-seo-deprecated.php:69
+#: php7/class-ahrefs-seo-deprecated.php:73
 msgid "Read more"
 msgstr ""
 
@@ -80,14 +82,14 @@ msgstr[1] ""
 #: php5/class-ahrefs-seo-analytics.php:374
 #: php5/class-ahrefs-seo-analytics.php:376
 #: php5/class-ahrefs-seo-api.php:156
-#: php5/class-ahrefs-seo-api.php:250
+#: php5/class-ahrefs-seo-api.php:238
 #: php5/class-analytics-ga.php:529
 #: php7/class-ahrefs-seo-analytics.php:422
 #: php7/class-ahrefs-seo-analytics.php:424
 #: php7/class-ahrefs-seo-analytics.php:426
 #: php7/class-ahrefs-seo-analytics.php:428
 #: php7/class-ahrefs-seo-api.php:175
-#: php7/class-ahrefs-seo-api.php:275
+#: php7/class-ahrefs-seo-api.php:264
 #: php7/class-analytics-ga.php:577
 msgid "Connection error"
 msgstr ""
@@ -196,9 +198,9 @@ msgid "Ahrefs API get subscription info failed."
 msgstr ""
 
 #: php5/class-ahrefs-seo-api.php:140
-#: php5/class-ahrefs-seo-api.php:225
+#: php5/class-ahrefs-seo-api.php:209
 #: php7/class-ahrefs-seo-api.php:158
-#: php7/class-ahrefs-seo-api.php:247
+#: php7/class-ahrefs-seo-api.php:231
 msgid "Ahrefs token is required."
 msgstr ""
 
@@ -207,33 +209,33 @@ msgstr ""
 msgid "Please try again later"
 msgstr ""
 
-#: php5/class-ahrefs-seo-api.php:204
-#: php7/class-ahrefs-seo-api.php:225
-msgid "Ahrefs account disconnected due to invalid token."
-msgstr ""
-
-#: php5/class-ahrefs-seo-api.php:207
-#: php5/class-ahrefs-seo-screen-settings.php:128
-#: php5/class-ahrefs-seo-screen-wizard.php:71
-#: php7/class-ahrefs-seo-api.php:228
-#: php7/class-ahrefs-seo-screen-settings.php:138
-#: php7/class-ahrefs-seo-screen-wizard.php:83
-msgid "The code is invalid"
-msgstr ""
-
-#: php5/class-ahrefs-seo-api.php:245
-#: php7/class-ahrefs-seo-api.php:270
+#: php5/class-ahrefs-seo-api.php:233
+#: php7/class-ahrefs-seo-api.php:259
 msgid "Empty answer"
 msgstr ""
 
-#: php5/class-ahrefs-seo-api.php:289
-#: php7/class-ahrefs-seo-api.php:317
+#: php5/class-ahrefs-seo-api.php:277
+#: php7/class-ahrefs-seo-api.php:306
 msgid "Ahrefs API get metrics extended failed."
 msgstr ""
 
-#: php5/class-ahrefs-seo-api.php:300
-#: php7/class-ahrefs-seo-api.php:328
+#: php5/class-ahrefs-seo-api.php:288
+#: php7/class-ahrefs-seo-api.php:317
 msgid "Limited Ahrefs account detected."
+msgstr ""
+
+#: php5/class-ahrefs-seo-api.php:410
+#: php7/class-ahrefs-seo-api.php:448
+msgid "Ahrefs account disconnected due to invalid token."
+msgstr ""
+
+#: php5/class-ahrefs-seo-api.php:413
+#: php5/class-ahrefs-seo-screen-settings.php:128
+#: php5/class-ahrefs-seo-screen-wizard.php:71
+#: php7/class-ahrefs-seo-api.php:451
+#: php7/class-ahrefs-seo-screen-settings.php:138
+#: php7/class-ahrefs-seo-screen-wizard.php:83
+msgid "The code is invalid"
 msgstr ""
 
 #: php5/class-ahrefs-seo-charts.php:117
@@ -494,6 +496,19 @@ msgstr ""
 msgid "Unknown column error. The database user doesn't have permission to perform ALTER or DROP database actions due to a misconfiguration or error on the server. Please check with your server host to fix this or contact %s for help."
 msgstr ""
 
+#. translators: %s: date
+#: php5/class-ahrefs-seo-deprecated.php:64
+#: php7/class-ahrefs-seo-deprecated.php:70
+#, php-format
+msgid "The Ahrefs SEO WordPress plugin will be retired on %s."
+msgstr ""
+
+#. translators: %s: date
+#: php5/class-ahrefs-seo-deprecated.php:64
+#: php7/class-ahrefs-seo-deprecated.php:70
+msgid "October 31"
+msgstr ""
+
 #: php5/class-ahrefs-seo-errors.php:279
 #: php7/class-ahrefs-seo-errors.php:297
 msgid "Ahrefs API"
@@ -524,8 +539,8 @@ msgstr ""
 #: php5/class-ahrefs-seo-errors.php:290
 #: php5/class-ahrefs-seo-screen-content.php:86
 #: php5/class-ahrefs-seo-view.php:216
-#: php5/class-ahrefs-seo.php:295
-#: php5/class-ahrefs-seo.php:328
+#: php5/class-ahrefs-seo.php:296
+#: php5/class-ahrefs-seo.php:329
 #: php5/templates/headers/content.php:23
 #: php5/templates/headers/error.php:13
 #: php5/templates/headers/settings.php:14
@@ -533,8 +548,8 @@ msgstr ""
 #: php7/class-ahrefs-seo-errors.php:308
 #: php7/class-ahrefs-seo-screen-content.php:95
 #: php7/class-ahrefs-seo-view.php:238
-#: php7/class-ahrefs-seo.php:326
-#: php7/class-ahrefs-seo.php:366
+#: php7/class-ahrefs-seo.php:327
+#: php7/class-ahrefs-seo.php:367
 #: php7/templates/headers/content.php:28
 #: php7/templates/headers/error.php:15
 #: php7/templates/headers/settings.php:18
@@ -726,11 +741,11 @@ msgstr ""
 #: php5/class-ahrefs-seo-screen-settings.php:54
 #: php5/class-ahrefs-seo-screen-settings.php:258
 #: php5/class-ahrefs-seo-screen-settings.php:260
-#: php5/class-ahrefs-seo.php:773
+#: php5/class-ahrefs-seo.php:774
 #: php7/class-ahrefs-seo-screen-settings.php:61
 #: php7/class-ahrefs-seo-screen-settings.php:275
 #: php7/class-ahrefs-seo-screen-settings.php:277
-#: php7/class-ahrefs-seo.php:857
+#: php7/class-ahrefs-seo.php:858
 msgid "My audit data"
 msgstr ""
 
@@ -1673,36 +1688,36 @@ msgstr ""
 msgid "Plugin initialization failed."
 msgstr ""
 
-#: php5/class-ahrefs-seo.php:283
-#: php5/class-ahrefs-seo.php:288
-#: php5/class-ahrefs-seo.php:294
-#: php5/class-ahrefs-seo.php:299
-#: php7/class-ahrefs-seo.php:312
-#: php7/class-ahrefs-seo.php:318
-#: php7/class-ahrefs-seo.php:325
-#: php7/class-ahrefs-seo.php:330
+#: php5/class-ahrefs-seo.php:284
+#: php5/class-ahrefs-seo.php:289
+#: php5/class-ahrefs-seo.php:295
+#: php5/class-ahrefs-seo.php:300
+#: php7/class-ahrefs-seo.php:313
+#: php7/class-ahrefs-seo.php:319
+#: php7/class-ahrefs-seo.php:326
+#: php7/class-ahrefs-seo.php:331
 msgid "Ahrefs SEO for WordPress"
 msgstr ""
 
-#: php5/class-ahrefs-seo.php:299
+#: php5/class-ahrefs-seo.php:300
 #: php5/templates/headers/settings.php:18
-#: php7/class-ahrefs-seo.php:330
+#: php7/class-ahrefs-seo.php:331
 #: php7/templates/headers/settings.php:20
 msgid "Settings"
 msgstr ""
 
-#: php5/class-ahrefs-seo.php:379
-#: php7/class-ahrefs-seo.php:426
+#: php5/class-ahrefs-seo.php:380
+#: php7/class-ahrefs-seo.php:427
 msgid "Quick database update failed"
 msgstr ""
 
-#: php5/class-ahrefs-seo.php:794
-#: php7/class-ahrefs-seo.php:883
+#: php5/class-ahrefs-seo.php:795
+#: php7/class-ahrefs-seo.php:884
 msgid "When you delete the plugin, your settings and audit data are removed from your website’s database. You can disable this in the plugin settings individually for each website if you are temporarily uninstalling the plugin and want your data to be preserved."
 msgstr ""
 
-#: php5/class-ahrefs-seo.php:814
-#: php7/class-ahrefs-seo.php:907
+#: php5/class-ahrefs-seo.php:815
+#: php7/class-ahrefs-seo.php:908
 msgid "Suggest a feature"
 msgstr ""
 
@@ -4151,6 +4166,63 @@ msgstr ""
 #: php5/templates/parts/notices/audit-delayed.php:10
 #: php7/templates/parts/notices/audit-delayed.php:13
 msgid "We are experiencing some downtime from Google Analytics & Search Console API so the content audit run is taking a little longer than usual. The audit is still running in the background so please check back in a couple of minutes! The content audit will be delayed by approximately 15 minutes."
+msgstr ""
+
+#: php5/templates/parts/notices/plugin-deprecated.php:15
+#: php7/templates/parts/notices/plugin-deprecated.php:11
+msgid "Ahrefs SEO WordPress Plugin is being deprecated"
+msgstr ""
+
+#. translators: %s: date
+#: php5/templates/parts/notices/plugin-deprecated.php:21
+#: php7/templates/parts/notices/plugin-deprecated.php:15
+#, php-format
+msgid "We’re retiring the Ahrefs SEO WordPress plugin on %s."
+msgstr ""
+
+#. translators: %s: date
+#: php5/templates/parts/notices/plugin-deprecated.php:21
+#: php5/templates/parts/notices/plugin-deprecated.php:37
+#: php7/templates/parts/notices/plugin-deprecated.php:15
+#: php7/templates/parts/notices/plugin-deprecated.php:25
+msgid "October 31, 2025"
+msgstr ""
+
+#: php5/templates/parts/notices/plugin-deprecated.php:23
+#: php7/templates/parts/notices/plugin-deprecated.php:17
+msgid "Before that date, please export any content audits you want to keep, as the plugin will no longer be available afterward."
+msgstr ""
+
+#: php5/templates/parts/notices/plugin-deprecated.php:31
+#: php7/templates/parts/notices/plugin-deprecated.php:21
+msgid "Ahrefs SEO WordPress Plugin has been deprecated"
+msgstr ""
+
+#. translators: %s: date
+#: php5/templates/parts/notices/plugin-deprecated.php:37
+#: php7/templates/parts/notices/plugin-deprecated.php:25
+#, php-format
+msgid "The Ahrefs SEO WordPress plugin was retired on %s."
+msgstr ""
+
+#: php5/templates/parts/notices/plugin-deprecated.php:45
+#: php7/templates/parts/notices/plugin-deprecated.php:29
+msgid "You can continue checking your traffic, ranking keywords, backlinks, and running Site Audits — all inside Ahrefs Webmaster Tools, completely free for domains you own."
+msgstr ""
+
+#: php5/templates/parts/notices/plugin-deprecated.php:50
+#: php7/templates/parts/notices/plugin-deprecated.php:31
+msgid "Learn more at ahrefs.com/webmaster-tools"
+msgstr ""
+
+#: php5/templates/parts/notices/plugin-deprecated.php:55
+#: php7/templates/parts/notices/plugin-deprecated.php:33
+msgid "We’re also bringing the same functionality as this plugin directly into the Ahrefs Toolkit, so stay tuned for announcements."
+msgstr ""
+
+#: php5/templates/parts/notices/plugin-deprecated.php:60
+#: php7/templates/parts/notices/plugin-deprecated.php:35
+msgid "Have questions? Our support team is here to help:"
 msgstr ""
 
 #: php5/templates/parts/options-tips/include-cpt.php:13

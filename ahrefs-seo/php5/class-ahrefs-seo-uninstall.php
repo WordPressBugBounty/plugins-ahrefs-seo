@@ -42,6 +42,7 @@ class Ahrefs_Seo_Uninstall {
 		$this->remove_options();
 		$this->remove_transients();
 		$this->remove_tables();
+		$this->clean_users_meta();
 		// clear WP cache.
 		wp_cache_flush();
 	}
@@ -80,5 +81,11 @@ class Ahrefs_Seo_Uninstall {
 		foreach ( $tables as $table ) {
 			$wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}{$table}" ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.SchemaChange,WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- remove own predefined tables.
 		}
+	}
+	/**
+	 * Remove admin message metadata
+	 */
+	private function clean_users_meta() {
+		delete_metadata( 'user', 0, 'ahrefs_seo_admin_notice_dismissed', '', true );
 	}
 }

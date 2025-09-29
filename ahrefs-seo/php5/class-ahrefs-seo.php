@@ -177,6 +177,7 @@ class Ahrefs_Seo {
 	 */
 	private function init() {
 		add_action( 'admin_init', [ $this, 'admin_init' ] );
+		add_action( 'admin_init', [ Ahrefs_Seo_Deprecated::class, 'admin_init' ] );
 		if ( is_admin() ) {
 			add_action( 'init', [ $this, 'load_textdomain' ], 13 ); // first of init actions.
 			add_action( 'init', [ $this, 'init_screens' ], 15 );

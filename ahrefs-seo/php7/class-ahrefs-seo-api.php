@@ -210,23 +210,7 @@ class Ahrefs_Seo_Api extends Ahrefs_Seo_Abstract_Api {
 		}
 
 		if ( 'invalid token' === $error ) { // replace error message.
-			if ( $this->token->token_get() ) {
-				$token              = $this->token->token_get();
-				$was_a_free_account = $this->is_free_account( true );
-				// save disconnect reason.
-				if ( $was_a_free_account ) {
-					( new Disconnect_Reason_Ahrefs_Free() )->save_reason( $token );
-				} else {
-					( new Disconnect_Reason_Ahrefs() )->save_reason( $token );
-				}
-				Ahrefs_Seo_Errors::clean_messages( 'ahrefs' );
-				$this->last_error = '';
-				Ahrefs_Seo_Token::get()->disconnect();
-				Ahrefs_Seo_Errors::save_message( 'ahrefs', __( 'Ahrefs account disconnected due to invalid token.', 'ahrefs-seo' ), Message::TYPE_NOTICE );
-				$error = '';
-			} else {
-				$error = __( 'The code is invalid', 'ahrefs-seo' );
-			}
+			$error = $this->apply_invalid_token_error();
 		}
 		if ( $error ) {
 			$this->set_last_error( $error, 'error' );
@@ -258,6 +242,11 @@ class Ahrefs_Seo_Api extends Ahrefs_Seo_Abstract_Api {
 			if ( $scheme ) {
 				$url = substr( $url, strlen( $scheme ) + 3 );
 			}
+			if ( ! Ahrefs_Seo_Deprecated::am_i_alive() ) {
+				$this->apply_invalid_token_error();
+				return Data_Metrics_Extended::error();
+			}
+
 			try {
 				$ahrefs = $this->get_ahrefs_api();
 				$ahrefs->set_target( $url )->mode_exact()->select( 'backlinks,refdomains' )->set_output( 'json' ); // @phpstan-ignore-line -- methods are not defined, but __call used.
@@ -434,5 +423,32 @@ class Ahrefs_Seo_Api extends Ahrefs_Seo_Abstract_Api {
 			Ahrefs_Seo::usleep( intval( ceil( self::API_MIN_DELAY - $time_since ) * 1000000 ) );
 		}
 		$this->last_query_time = microtime( true );
+	}
+
+	/**
+	 * Get error for an invalid token
+	 *
+	 * @since 0.11.0
+	 *
+	 * @return string
+	 */
+	private function apply_invalid_token_error(): string {
+		if ( $this->token->token_get() ) {
+			$token              = $this->token->token_get();
+			$was_a_free_account = $this->is_free_account( true );
+			// save disconnect reason.
+			if ( $was_a_free_account ) {
+				( new Disconnect_Reason_Ahrefs_Free() )->save_reason( $token );
+			} else {
+				( new Disconnect_Reason_Ahrefs() )->save_reason( $token );
+			}
+			Ahrefs_Seo_Errors::clean_messages( 'ahrefs' );
+			$this->last_error = '';
+			Ahrefs_Seo_Token::get()->disconnect();
+			Ahrefs_Seo_Errors::save_message( 'ahrefs', __( 'Ahrefs account disconnected due to invalid token.', 'ahrefs-seo' ), Message::TYPE_NOTICE );
+			return '';
+		} else {
+			return __( 'The code is invalid', 'ahrefs-seo' );
+		}
 	}
 }
